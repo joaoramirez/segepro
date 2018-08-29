@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui" template="../WEB-INF/template.xhtml">
+    <h:head>
+        <!--<link rel="stylesheet" href="../Repositorio/font-awesome-4.7.0/css/font-awesome.min.css"></link>-->
+        <title>MANTENIMIENTO :: SEGEPRO</title>
+    </h:head>
+    <ui:define name="body" >
+        <div class="logo" style="margin-top:1%; margin-right:0%"><img src="../img/logo-hphes.png"  style=" width:10%;margin-left:85%;height:10%;margin-bottom: 0%"></img></div>
+        <div class="Continaer100 ui-fluid">
+            <div class="Card">
+                <div class="BigTopic">INGRESAR CLIENTES</div>
+                <div class="Separator"/>
+                <br />
+                <h:form id="PrincipalForm">
+                    <p:growl id="msg" showDetail="true" life="3000" />
+                    <p:growl id="message" showDetail="true" />
+                    <p:growl id="message1" showDetail="true" />
+                    <p:panelGrid id="panelIngreso1" columns="7" style="border: none" layout="grid">
+                        <p:outputLabel value="Codigo:" />
+                        <p:inputText id="codSol" value="${clienteController.idCliente}" required="true" requiredMessage="El campo Número de Solicitud es Requerido." />
+                        <p:outputLabel value="Nombres Solicitante:" />
+                        <p:inputText id="nomSol" value="${clienteController.nombre}" required="true" requiredMessage="El campo Nombre Solicitante es Requerido." />
+                        <p:outputLabel value="Apellidos Solicitante:" />
+                        <p:inputText id="apeSol" value="${clienteController.apellido}" required="true" requiredMessage="El campo Apellido es Requerido." />
+                        <!--<p:commandButton id="agregar" icon="fa fa-plus" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />-->
+                    </p:panelGrid>
+                    <!--<p:panel id="datos" header="Datos personales del solicitante" style="margin-bottom:10px;">-->
+                        <div class="Container50 Responsive">
+                            <p:panelGrid id="panelIngreso2" columns="1" style="border: none" layout="grid">
+                                <p:outputLabel value="DUI:" />
+                                <p:inputMask id="dui" value="${clienteController.dui}" mask="99999999-9" required="true" requiredMessage="El campo DUI es Requerido." />
+                                <p:outputLabel value="NIT:" />
+                                <p:inputMask id="nit" value="${clienteController.nit}" mask="9999-999999-999-9" required="true" requiredMessage="El campo NIT es Requerido." />
+                                <p:outputLabel  value="Genero:" />
+                                <p:selectOneMenu value="${clienteController.sexo}" required="true" requiredMessage="El campo Genero es Requerido." >
+                                    <p:ajax event="itemSelect"/>
+                                    <f:selectItem itemLabel="--Seleccione--" itemValue="#{null}" />
+                                    <f:selectItem itemLabel="Femenino" itemValue="F" />
+                                    <f:selectItem itemLabel="Masculino" itemValue="M" />
+                                </p:selectOneMenu>
+                                <p:outputLabel  value="Estado Civil:" />
+                                <p:selectOneMenu id="console" value="#{clienteController.estado_civil}" >
+                                    <f:selectItem itemLabel="-Seleccione-" itemValue="" />
+                                    <f:selectItem itemLabel="Soltero/a" itemValue="Soltero/a" />
+                                    <f:selectItem itemLabel="Casado/a" itemValue="Casado/a" />
+                                    <f:selectItem itemLabel="Acompañado/a" itemValue="Acompañado/a" />
+                                    <f:selectItem itemLabel="Viudo/a" itemValue="Viudo/a" />
+                                    <f:selectItem itemLabel="Separado/a" itemValue="Separado/a" />
+                                    <f:selectItem itemLabel="Divorsiado/a" itemValue="Divorsiado/a" />
+                                </p:selectOneMenu>
+                                <p:outputLabel  value="Lugar de Nacimiento:" />
+                                <p:inputText id="lugNac" value="${clienteController.lugarNac}" required="true" requiredMessage="El campo Nombre Referencia es Requerido." />
+                                <p:outputLabel value="Fecha de Nacimiento:" />
+                                <p:calendar id="fechaNac" pattern="dd/MM/yyyy" mask="99/99/9999" value="${clienteController.fecNac}" title="Fecha" showOn="button" required="true" requiredMessage="El campo Fecha es requerido" tabindex="8" />
+                                <p:outputLabel value="Teléfono:" />
+                                <p:inputMask id="tel" value="${clienteController.telefono}" mask="9999-9999" required="true" requiredMessage="El campo Teléfono es Requerido." />
+                                <p:outputLabel  value="Profesión/Oficio:" />
+                                <p:selectOneMenu value="${clienteController.profesion}" required="true" requiredMessage="El campo Parentesco es Requerido." >
+                                    <p:ajax event="itemSelect"/>
+                                    <f:selectItem itemLabel="--Seleccione--" itemValue="" />
+                                    <f:selectItems value="#{clienteController.listadoProfesion}"
+                                                           var="listadoItem"
+                                                           itemLabel="#{listadoItem.nombreProfesion}"
+                                                           itemValue="#{listadoItem.nombreProfesion}" />
+                                </p:selectOneMenu>
+                                <p:outputLabel  value="Lugar de Expedicion" />
+                                <p:inputText id="lugExp" value="${clienteController.lugarExp}" required="true" requiredMessage="El campo Nombre Referencia es Requerido." />
+                                <p:outputLabel value="Fecha de Expedicion" />
+                                <p:calendar id="fechaExp" pattern="dd/MM/yyyy" mask="99/99/9999" value="${clienteController.fecExp}" title="Fecha" showOn="button" required="true" requiredMessage="El campo Fecha es requerido" tabindex="8" />
+                            </p:panelGrid>
+                        </div>
+                        <div class="Container50 Responsive">
+                            <p:panelGrid id="panelIngreso3" columns="1" style="border: none" layout="grid">
+                                <p:outputLabel value="Dirección:" />
+                                <p:inputTextarea id="dirClie" value="#{clienteController.direccion}" required="true" requiredMessage="El campo Dirección es Requerido." />
+                                <p:outputLabel value="Punto Referencia:" />
+                                <p:inputTextarea id="puntoref" value="#{clienteController.punto_ref}" required="true" requiredMessage="El campo Dirección es Requerido." />
+                                <p:outputLabel value="Reside desde:" />
+                                <p:inputText id="reside" value="#{clienteController.reside_desde}" required="true" requiredMessage="El campo Código Referencia es Requerido." />
+                                <p:outputLabel  value="Condición de la Vivienda:" />
+                                <p:selectOneMenu value="#{clienteController.condicionVivienda}" required="true" requiredMessage="El campo condicion vivienda es Requerido." >
+                                    <p:ajax event="itemSelect"/>
+                                    <f:selectItem itemLabel="--Seleccione--" itemValue="" />
+                                    <f:selectItem itemLabel="Propia" itemValue="Masculino" />
+                                    <f:selectItem itemLabel="Alquilada" itemValue="Femenino" />
+                                    <f:selectItem itemLabel="Otro" itemValue="Otro" />
+                                </p:selectOneMenu>
+                                <p:outputLabel value="Lugar de Trabajo:" />
+                                <p:inputText id="lugTrabClie" value="#{clienteController.lugarTrabajo}" required="true" requiredMessage="El campo Lugar de Trabajo es Requerido." />
+                                <p:outputLabel  value="Jefe Inmediato:" />
+                                <p:inputText id="jefe" value="#{clienteController.jefeInmediato}"  required="true" requiredMessage="El campo Teléfono es Requerido." />
+                                <p:outputLabel value="Tiempo de Empleo:" />
+                                <p:inputText id="tiempoEmpleo" value="#{clienteController.tiempoEmpleo}" required="true" requiredMessage="El campo Dirección es Requerido." />
+                                <p:outputLabel  value="Fiador:" />
+                                <p:selectOneMenu value="${clienteController.fiador}" required="true" requiredMessage="El campo Fiador es Requerido." >
+                                    <p:ajax event="itemSelect"/>
+                                    <f:selectItem itemLabel="--Seleccione--" itemValue="" />
+                                    <f:selectItem itemLabel="Si" itemValue="S" />
+                                    <f:selectItem itemLabel="No" itemValue="N" />
+                                </p:selectOneMenu>
+                                <p:outputLabel value="Salario:" />
+                                <p:inputNumber id="salario" value="#{clienteController.salario}" symbol=" $" symbolPosition="p" decimalSeparator="." thousandSeparator="," required="true" requiredMessage="El campo Cuota de Pago es Requerido." >  </p:inputNumber> 
+                            </p:panelGrid>
+                        </div>
+                        <div class="EmptyBox40"/>
+                        <div class="Continaer100 ui-fluid">
+                            <p:dataTable id="datalist" var="item" paginator="true" rows="10" value="#{clienteController.listadoCliente}"
+                                         rowSelectMode="single" selectionMode="single" rowKey="${item.idCliente}" selection="#{clienteController.seletedCliente}"
+                                         rowsPerPageTemplate="10,20,30,40,50,60,70,80,90,100" reflow="true">
+                                <p:ajax event="rowSelect" update=":PrincipalForm:actualizaCliente :PrincipalForm:msg" />
+                                <p:column>
+                                    <f:facet name="header">
+                                        Código
+                                    </f:facet>
+                                    <h:outputText value="${item.idCliente}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        Nombre
+                                    </f:facet>
+                                    <h:outputText value="${item.nombre}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        Apellido
+                                    </f:facet>
+                                    <h:outputText value="${item.apellido}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        DUI
+                                    </f:facet>
+                                    <h:outputText value="${item.dui}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        Fecha Nacimiento
+                                    </f:facet>
+                                    <h:outputText value="#{item.fecNac}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        Télefono
+                                    </f:facet>
+                                    <h:outputText value="${item.telefono}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        Salario
+                                    </f:facet>
+                                    <h:outputText value="${item.salario}" />
+                                </p:column>
+
+                            </p:dataTable>
+                            <br/>
+                            <p:panelGrid columns="5" style="border: none" layout="grid">
+                                <p:commandButton id="guardar" icon="fa fa-floppy-o" value="Guardar" title="Guardar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" actionListener="#{clienteController.guardar()}" update="@form" process="@this, PrincipalForm:panelIngreso1, PrincipalForm:panelIngreso2, PrincipalForm:panelIngreso3" />
+                                <p:commandButton id="actualizar" icon="fa fa-refresh" value="Actualizar" title="Actualizar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" process=":PrincipalForm:datalist" update=":PrincipalForm:actualizaCliente :PrincipalForm:datalist" oncomplete="PF('actualizaClienteDialog').show()" />
+                                <p:commandButton id="eliminar" icon="fa fa-minus" value="Eliminar" title="Eliminar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />
+                                <p:commandButton id="cancelar" icon="fa fa-times" value="Cancelar" title="Cancelar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" actionListener="#{clienteController.limpiarForm()}" update="@form" process="@this, PrincipalForm:panelIngreso1, PrincipalForm:panelIngreso2, PrincipalForm:panelIngreso3" />
+                            </p:panelGrid>
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:confirmDialog>
+
+                            <p:dialog id="actualizaCliente" widgetVar="actualizaClienteDialog" modal="true" resizable="false" showEffect="fade" hideEffect="fade" header="Actualizacion de Clientes">
+                                <p:panelGrid id="mostrar" columns="2" >
+                                    
+                                    <p:outputLabel value="Codigo"  />
+                                    <p:outputLabel value="#{clienteController.seletedCliente.idCliente}" />
+
+                                    <p:outputLabel value="Nombre"  />
+                                    <p:inputText value="#{clienteController.seletedCliente.nombre}" />
+
+                                    <p:outputLabel value="Apellido"  />
+                                    <p:inputText value="${clienteController.seletedCliente.apellido}" />
+
+                                    <p:outputLabel value="DUI" />
+                                    <p:inputText value="${clienteController.seletedCliente.dui}" />
+
+                                    <p:outputLabel value="NIT"  />
+                                    <p:inputText value="${clienteController.seletedCliente.nit}" />
+
+                                    <p:outputLabel value="Genero" />
+                                    <p:selectOneMenu value="${clienteController.seletedCliente.sexo}">
+                                        <p:ajax event="itemSelect"/>
+                                        <f:selectItem itemLabel="--Seleccione--" itemValue="" />
+                                        <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+                                        <f:selectItem itemLabel="Femenino" itemValue="Femenino" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel value="Lugar de Nacimiento" />
+                                    <p:inputText value="${clienteController.seletedCliente.lugarNac}" />
+
+                                    <p:outputLabel value="Fecha de Nacimiento" />
+                                    <p:calendar pattern="dd/MM/yyyy" mask="99/99/9999" value="${clienteController.seletedCliente.fecNac}" />
+
+                                    <p:outputLabel value="Teléfono" />
+                                    <p:inputMask value="${clienteController.seletedCliente.telefono}" mask="9999-9999" />
+
+                                    <p:outputLabel value="Profesión/Oficio:" />
+                                    <p:inputText value="${clienteController.seletedCliente.profesion}" />
+
+                                    <p:outputLabel value="Dirección" />
+                                    <p:inputText value="${clienteController.seletedCliente.direccion}" />
+
+                                    <p:outputLabel value="Reside Desde" />
+                                    <p:inputText value="${clienteController.seletedCliente.resideDesde}" />
+
+                                    <p:outputLabel value="Condición de Vivienda" />
+                                    <p:selectOneMenu value="${clienteController.seletedCliente.condicionVivienda}" >
+                                        <p:ajax event="itemSelect"/>
+                                        <f:selectItem itemLabel="--Seleccione--" itemValue="" />
+                                        <f:selectItem itemLabel="Propia" itemValue="Masculino" />
+                                        <f:selectItem itemLabel="Alquilada" itemValue="Femenino" />
+                                        <f:selectItem itemLabel="Otro" itemValue="Otro" />
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel value="Lugar de Trabajo" />
+                                    <p:inputText value="${clienteController.seletedCliente.lugarTrabajo}" />
+
+                                    <p:outputLabel value="Jefe Inmediato" />
+                                    <p:inputText value="${clienteController.seletedCliente.jefeInmediato}" />
+
+                                    <p:outputLabel value="Tiempo de Empleo" />
+                                    <p:inputText value="${clienteController.seletedCliente.tiempoEmpleo}" />
+
+                                    <p:outputLabel value="Salario" />
+                                    <p:inputText value="${clienteController.seletedCliente.salario}" />
+
+                                </p:panelGrid>
+                                <p:panelGrid columns="5" style="border: none" layout="grid">
+                                    <p:commandButton id="actualizar_modal" icon="fa fa-refresh" value="Actualizar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />
+                                </p:panelGrid>
+                            </p:dialog>
+                        </div>
+                    <!--</p:panel>-->
+                </h:form>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>

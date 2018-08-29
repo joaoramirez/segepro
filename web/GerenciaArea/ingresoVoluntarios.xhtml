@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui" template="../WEB-INF/template.xhtml">
+    <h:head>
+<!--        <link rel="stylesheet" href="../Repositorio/font-awesome-4.7.0/css/font-awesome.min.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/core-layout.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/olympos-layout.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/olympos-font.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/animate.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/nanoscroller.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/font-awsone.css"></link>-->
+        <title>Gerencia de Area :: SEGEPRO</title>
+    </h:head>
+    <ui:define name="body" >
+        <div class="logo" style="margin-top:1%; margin-right:0%"><img src="../img/logo-hphes.png"  style=" width:10%;margin-left:85%;height:10%;margin-bottom: 0%"></img></div>
+        <div class="Continaer100 ui-fluid">
+            <div class="Card">
+                <div class="BigTopic">Ingresar Agencias</div>
+                <div class="Separator"/>
+                <br />
+                <h:form id="PrincipalForm">
+                    <p:growl id="msg" showDetail="true" life="3000" />
+                    <p:growl id="message" showDetail="true" />
+                    <p:growl id="message1" showDetail="true" />
+                    <p:panelGrid id="panelIngreso" columns="2" style="border: none" layout="grid">
+                        <p:outputLabel value="Codigo Voluntario:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputText id="idvoluntario" value="#{voluntariosController.idvoluntario}" required="true" requiredMessage="Campo Codigo Voluntario es Requerido." />
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel value="Brigada:" />
+                        <div class="EmptyBox5"/>
+                        <p:selectOneMenu id="brigada" value="#{voluntariosController.idbrigada}" required="true" requiredMessage="Campo Tipo Brgada es Requerido."  >
+                            <p:ajax event="itemSelect"/>
+                            <f:selectItem itemLabel="--Seleccione--" itemValue="#{null}" />
+                            <f:selectItems value="#{voluntariosController.listadoBrigadas}"
+                                               var="brigadasItem"
+                                               itemLabel="#{brigadasItem.nomre}" 
+                                               itemValue="#{brigadasItem.idBrigada}" />
+                        </p:selectOneMenu>
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel value="Nombres:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputText id="nom" value="#{voluntariosController.nombres}" required="true" requiredMessage="Campo Nombres Solicitante es Requerido." />
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel value="Apellidos:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputText id="ape" value="#{voluntariosController.apellidos}" required="true" requiredMessage="Campo Apellidos Referencia es Requerido." />
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel value="DUI:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputText id="dui" value="#{voluntariosController.dui}" required="true" requiredMessage="Campo DUI Referencia es Requerido." />
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="NIT:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputText id="nit" value="#{voluntariosController.nit}" required="true" requiredMessage="Campo NIT es Requerido." />
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel value="Nacionalidad:" />
+                        <div class="EmptyBox5"/>
+                        <p:selectOneMenu value="#{voluntariosController.nacionalidad}" required="true" requiredMessage="Campo Nacionalidad es Requerido." >
+                            <p:ajax event="itemSelect"/>
+                            <f:selectItem itemLabel="--Seleccione--" itemValue="#{null}" />
+                            <f:selectItem itemLabel="Salvadoreña" itemValue="Salvadoreña" />
+                            <f:selectItem itemLabel="Estadounidense" itemValue="Estadounidense" />
+                            <f:selectItem itemLabel="Canadiense" itemValue="Canadiense" />
+                            <f:selectItem itemLabel="Dominicana" itemValue="Dominicana" />
+                        </p:selectOneMenu>
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel value="Numero Pasaporte:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputText id="pasaporte" value="#{voluntariosController.numpasaporte}" required="true" requiredMessage="Campo Direccion es Requerido." />
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel value="Fecha Nacimiento:" />
+                        <div class="EmptyBox5"/>
+                        <p:calendar id="fnacimiento" pattern="dd/MM/yyyy" mask="99/99/9999" value="#{voluntariosController.fecha_nacimiento}" showOn="button" required="true" requiredMessage="El campo Fecha Nacimiento es requerido"/>
+                        <div class="EmptyBox40"/>
+                    </p:panelGrid>
+                    <br/>
+                    <p:dataTable id="datalist" var="item" paginator="true" rows="10" value="#{voluntariosController.listadoVoluntarios}"
+                                 rowKey="#{item.idVoluntario}" rowSelectMode="single" selectionMode="single" selection="#{voluntariosController.selectedVoluntarios}"
+                                 rowsPerPageTemplate="10,20,30,40,50,60,70,80,90,100" reflow="true">
+                        <p:ajax event="rowSelect" listener="#{voluntariosController.onRowSelectVoluntarios(event)}" update=":PrincipalForm:actualizaVoluntarios :PrincipalForm:msg" process="@this" />
+                        <p:column>
+                            <f:facet name="header">
+                                Codigo Voluntario
+                            </f:facet>
+                            <h:outputText value="#{item.idVoluntario}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Código Brigada
+                            </f:facet>
+                            <h:outputText value="#{item.idBrigada}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Nombres
+                            </f:facet>
+                            <h:outputText value="#{item.nombres}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Apellidos
+                            </f:facet>
+                            <h:outputText value="#{item.apellidos}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                DUI
+                            </f:facet>
+                            <h:outputText value="#{item.dui}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                NIT
+                            </f:facet>
+                            <h:outputText value="#{item.nit}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Nacionalidad
+                            </f:facet>
+                            <h:outputText value="#{item.nacionalidad}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Numero Pasaporte
+                            </f:facet>
+                            <h:outputText value="#{item.numPasaporte}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Fecha Nacimiento
+                            </f:facet>
+                            <h:outputText value="#{item.fechaNacimiento}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:outputText>
+                        </p:column>
+                    </p:dataTable>
+                    <br/>
+                    <p:panelGrid columns="5" style="border: none" layout="grid">
+                        <p:commandButton id="guardar" icon="fa fa-floppy-o" value="Guardar" title="Guardar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" actionListener="#{voluntariosController.guardar()}" update="@form" process="@this,PrincipalForm:panelIngreso" />
+                        <p:commandButton id="actualizar" icon="fa fa-refresh" value="Actualizar" title="Actualizar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" process="@this,:PrincipalForm:datalist" update=":PrincipalForm:actualizaVoluntarios :PrincipalForm:datalist" oncomplete="PF('actualizaVoluntariosDialog').show()" />
+                        <p:commandButton id="eliminar" icon="fa fa-minus" value="Eliminar" title="Eliminar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />
+                        <p:commandButton id="cancelar" icon="fa fa-times" value="Cancelar" title="Cancelar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" actionListener="#{voluntariosController.limpiarForm()}" update="@form" process="@this,PrincipalForm:panelIngreso" />
+                    </p:panelGrid>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>
+
+                    <p:dialog id="actualizaVoluntarios" widgetVar="actualizaVoluntariosDialog" modal="true" resizable="false" showEffect="fade" hideEffect="fade" header="Actualizacion de Voluntarios">
+                        <p:panelGrid id="mostrar" columns="2" rendered="#{voluntariosController.selectedVoluntarios != null}" >
+
+                            <p:outputLabel value="Codigo Voluntario"  />
+                            <p:outputLabel value="#{voluntariosController.idvoluntario_modal}" />
+                            
+                            <p:outputLabel value="Brigada"  />
+                            <p:selectOneMenu id="modal_brigada" value="#{voluntariosController.idbrigada_modal}" >
+                            <p:ajax event="itemSelect"/>
+                            <f:selectItem itemLabel="--Seleccione--" itemValue="#{null}" />
+                            <f:selectItems value="#{voluntariosController.listadoBrigadas}"
+                                               var="brigadasItem"
+                                               itemLabel="#{brigadasItem.nomre}" 
+                                               itemValue="#{brigadasItem.idBrigada}" />
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Nombres" />
+                            <p:inputText value="#{voluntariosController.nombres_modal}" />
+                            
+                            <p:outputLabel value="Apellidos"  />
+                            <p:inputText value="#{voluntariosController.apellidos_modal}" />
+
+                            <p:outputLabel value="DUI" />
+                            <p:inputText value="#{voluntariosController.dui_modal}" />
+
+                            <p:outputLabel value="NIT" />
+                            <p:inputText value="#{voluntariosController.nit_modal}" />
+
+                            <p:outputLabel value="Nacionalidad" />
+                            <p:selectOneMenu value="#{voluntariosController.nacionalidad_modal}" >
+                            <p:ajax event="itemSelect"/>
+                            <f:selectItem itemLabel="--Seleccione--" itemValue="#{null}" />
+                            <f:selectItem itemLabel="Salvadoreña" itemValue="Salvadoreña" />
+                            <f:selectItem itemLabel="Estadounidense" itemValue="Estadounidense" />
+                            <f:selectItem itemLabel="Canadiense" itemValue="Canadiense" />
+                            <f:selectItem itemLabel="Dominicana" itemValue="Dominicana" />
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Numero Pasaporte" />
+                            <p:inputText value="#{voluntariosController.numpasaporte_modal}" />
+
+                            <p:outputLabel value="Fecha Nacimiento" />
+                            <p:calendar id="modal_fnacimiento" pattern="dd/MM/yyyy" mask="99/99/9999" value="#{voluntariosController.fecha_nacimiento_modal}" showOn="button" />
+                            
+                        </p:panelGrid>
+                        <br />
+                        <p:panelGrid columns="5" style="border: none" layout="grid">
+                            <p:commandButton id="actualizar_modal" icon="fa fa-refresh" value="Actualizar" action="#{voluntariosController.actualizaVoluntarios()}"  update="@form" process="@this, PrincipalForm:mostrar :PrincipalForm:datalist :PrincipalForm:message1" oncomplete="handleSubmit(args,'actualizaVoluntariosDialog');" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />
+                        </p:panelGrid>
+                    </p:dialog>
+                </h:form>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>

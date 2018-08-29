@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 5.6.1.final using JasperReports Library version 5.6.1  -->
+<!-- 2018-02-19T22:51:38 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="descripcion_bienes" pageWidth="612" pageHeight="792" columnWidth="608" leftMargin="2" rightMargin="2" topMargin="0" bottomMargin="0" uuid="c850c1f4-d188-49b4-966d-252a45b377ec">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SEGEPRO"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<parameter name="id_cliente" class="java.lang.Integer"/>
+	<parameter name="num_solicitud" class="java.lang.Integer"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\BorisECornejo\\Documents\\NetBeansProjects\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+ descrip_bienes.cod_descip,
+  descrip_bienes.nom_produc,
+  descrip_bienes.descripcion,
+ descrip_bienes.precio_compra,
+ descrip_bienes.cuota 
+ FROM
+  descrip_bienes
+  WHERE  descrip_bienes.cod_cliente = $P{id_cliente} 
+  AND  descrip_bienes.num_solicitud = $P{num_solicitud}]]>
+	</queryString>
+	<field name="cod_descip" class="java.lang.Integer"/>
+	<field name="nom_produc" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="precio_compra" class="java.math.BigDecimal"/>
+	<field name="cuota" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement x="56" y="2" width="490" height="24" uuid="0487bd60-fc94-4a65-9926-a5e3391d0989"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[EVALUACION PERSONAL]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="152" splitType="Stretch">
+			<textField>
+				<reportElement x="2" y="21" width="60" height="20" uuid="e1652f85-b27b-44a9-9b37-8e3d083c920e"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod_descip}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="62" y="21" width="130" height="20" uuid="ed3dc958-a242-4274-91a7-685f3338face"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nom_produc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="192" y="21" width="127" height="20" uuid="a81b38b1-9b4c-4846-987d-10e33847375a"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="319" y="21" width="121" height="20" uuid="6fd766b2-e8f6-4cb2-864c-426568de44d1"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precio_compra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="21" width="121" height="20" uuid="4975285a-1891-43d8-935c-b0d64a12ac83"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cuota}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement positionType="Float" x="-1" y="93" width="559" height="32" uuid="4bd5f350-557b-4a43-bf6f-12469bd58049"/>
+				<subreportParameter name="id_cliente">
+					<subreportParameterExpression><![CDATA[$P{id_cliente}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="num_solicitud">
+					<subreportParameterExpression><![CDATA[$P{num_solicitud}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["ingresos_familiares.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement mode="Opaque" x="2" y="1" width="559" height="20" forecolor="#FFFFFF" backcolor="#2FB134" uuid="a3d7cf98-9264-4ac7-be58-737dd2d1bf67"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripción de los bienes encontrados del hogar]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

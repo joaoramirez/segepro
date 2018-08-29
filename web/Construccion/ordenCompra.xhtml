@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui" template="../WEB-INF/template.xhtml">
+    <h:head>
+        <title>Creditos :: SEGEPRO</title>
+    </h:head>
+    <ui:define name="body" >
+        <div class="logo" style="margin-top:1%; margin-right:0%"><img src="../img/logo-hphes.png"  style=" width:10%;margin-left:85%;height:10%;margin-bottom: 0%"></img></div>
+        <div class="Continaer100 ui-fluid">
+            <div class="Card">
+                <div class="BigTopic">ORDEN DE COMPRA</div>
+                <div class="Separator"/>
+
+                <h:form id="PrincipalForm">
+                    <p:growl id="msg" showDetail="true" life="3000" />
+                    <p:growl id="message" showDetail="true" />
+                    <p:growl id="message1" showDetail="true" />
+
+                    <p:panel header="ASOCIACIÓN HPH EL SALVADOR" style="margin-bottom:10px;">
+                        <div class="Container50 Responsive">
+                            <p:panelGrid columns="1" style="border: none" layout="grid">
+                                <p:outputLabel value="Orden Número:"  />
+                                <p:inputText id="numOrden" value="#{ordenCompraController.ordenCompra.idOrden}" />
+                                <p:outputLabel value="Código Agencia:" />
+                                <p:inputText id="codAgencia" value="#{ordenCompraController.ordenCompra.idAgencia}" required="true" requiredMessage="El campo Código Agencia es Requerido."  />
+
+                                <p:outputLabel value="Dirección Oficina:" />
+                                <p:inputTextarea id="dirAgencia" value="#{ordenCompraController.ordenCompra.direccionOficina}" />
+                                <p:outputLabel value="Código Proyecto:" />
+                                <p:inputText id="codProyecto" value="#{ordenCompraController.ordenCompra.idProyecto}" />
+                            </p:panelGrid>
+                        </div>
+                        <div class="Container50 Responsive">
+                            <p:panelGrid columns="1" style="border: none" layout="grid">
+                                <p:outputLabel value="Fecha:" />
+                                <p:calendar id="fecha1" pattern="dd/MM/yyyy" mask="99/99/9999" value="#{ordenCompraController.ordenCompra.fecha}" showOn="button" tabindex="8" required="true" requiredMessage="El campo Fecha es Requerido." />
+                                <p:outputLabel  value="Tiempo de Entrega:" />
+                                <p:inputText id="tiempoEntrega" value="#{ordenCompraController.ordenCompra.tiempoEntrega}" required="true" requiredMessage="El campo Nombre Referencia es Requerido." />
+                                <p:outputLabel  value="Dirección Entrega:" />
+                                <p:inputTextarea id="dirEntrega" value="#{ordenCompraController.ordenCompra.direccionEntrega}"  required="true" requiredMessage="El campo Teléfono es Requerido." />
+                            </p:panelGrid>
+                        </div>
+                        <div class="EmptyBox40"/>
+                        <p:panelGrid columns="2" style="border: none" layout="grid">
+                            <p:outputLabel value="Proveedor:" />
+                            <p:outputLabel value="Producto:" />
+                            <p:inputText value="#{ordenCompraController.ordenCompraDet.idProveedor}" />
+                            <p:inputText value="#{ordenCompraController.ordenCompraDet.idMaterial}" />
+                        </p:panelGrid>
+                        <div class="EmptyBox5"/>
+                        <p:panelGrid columns="8" style="border: none" layout="grid">
+                            <p:outputLabel value="Orden Número:" />
+                            <p:outputLabel value="Descripción:" />
+                            <p:outputLabel value="Unidad:" />
+                            <p:outputLabel value="P.U.:" />
+                            <p:outputLabel value="Cantidad:" />
+                            <p:outputLabel value="SubTotal:" />
+                            <p:outputLabel value="Total:" />
+                            <p:outputLabel value="Agregar:" />
+                            <p:inputText value="#{ordenCompraController.ordenCompraDet.ordenCompraDetPK.idOrden}" />
+                            <p:inputText value="#{ordenCompraController.ordenCompraDet.descripcion}" />
+                            <p:inputText value="#{ordenCompraController.ordenCompraDet.idUnidad}" />
+                            <p:inputText value="#{ordenCompraController.ordenCompraDet.precioUnit}" />
+                            <p:inputText value="#{ordenCompraController.ordenCompraDet.cantidad}" />
+                            <p:inputText value="#{ordenCompraController.ordenCompraDet.subtotal}" />
+                            <p:inputText value="#{ordenCompraController.ordenCompraDet.total}" />
+                            <p:commandButton id="buscar" icon="fa fa-plus"
+                                             actionListener="#{ordenCompraController.guardarOrdenCompraDet()}"
+                                             update="PrincipalForm:datalist"
+                                             styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />
+                        </p:panelGrid>
+                        <div class="EmptyBox10"/>
+                        <div class="Continaer100 ui-fluid">
+                            <p:dataTable id="datalist" var="item" rowSelectMode="single" selectionMode="single"
+                                         value="#{ordenCompraDetController.lstOrdenCompraDet}" reflow="true">
+                                <p:ajax event="rowSelect" />
+                                <p:column>
+                                    <f:facet name="header">
+                                        Proveedor:
+                                    </f:facet>
+                                    <h:outputText value="#{item.idProveedor}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        Producto:
+                                    </f:facet>
+                                    <h:outputText value="#{item.idMaterial}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        Descripción:
+                                    </f:facet>
+                                    <h:outputText value="#{item.descripcion}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        Unidad:
+                                    </f:facet>
+                                    <h:outputText value="#{item.idUnidad}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        P.U.:
+                                    </f:facet>
+                                    <h:outputText value="#{item.precioUnit}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        Cantidad:
+                                    </f:facet>
+                                    <h:outputText value="#{item.cantidad}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        SubTotal
+                                    </f:facet>
+                                    <h:outputText value="#{item.subtotal}" />
+                                </p:column>
+                                <p:summaryRow>
+                                    <p:column colspan="6" style="text-align:right">
+                                        <h:outputText value="Total:" />
+                                    </p:column>
+                                    <p:column>
+                                        <h:outputText value="#{item.subtotal}">
+                                            <f:convertNumber type="currency" currencySymbol="$" />
+                                        </h:outputText>
+                                    </p:column>
+                                </p:summaryRow>
+                            </p:dataTable>
+                            <br/>
+                            <p:panelGrid columns="5" style="border: none" layout="grid">
+                                <p:commandButton id="guardar" icon="fa fa-floppy-o" value="Guardar" title="Guardar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />
+                                <p:commandButton id="actualizar" icon="fa fa-refresh" value="Actualizar" title="Actualizar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />
+                                <p:commandButton id="eliminar" icon="fa fa-minus" value="Eliminar" title="Eliminar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />
+                                <p:commandButton id="cancelar" icon="fa fa-times" value="Cancelar" title="Cancelar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />
+                            </p:panelGrid>
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:confirmDialog>
+                        </div>
+                    </p:panel>
+                </h:form>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>

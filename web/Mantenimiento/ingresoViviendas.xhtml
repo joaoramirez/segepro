@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui" template="../WEB-INF/template.xhtml">
+    <h:head>
+        <link rel="stylesheet" href="../Repositorio/font-awesome-4.7.0/css/font-awesome.min.css"></link>
+<!--        <link rel="stylesheet" href="../resources/olympos-layout/css/core-layout.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/olympos-layout.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/olympos-font.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/animate.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/nanoscroller.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/font-awsone.css"></link>-->
+        <title>MANTENIMIENTO :: SEGEPRO</title>
+    </h:head>
+    <ui:define name="body" >
+        <div class="logo" style="margin-top:1%; margin-right:0%"><img src="../img/logo-hphes.png"  style=" width:10%;margin-left:85%;height:10%;margin-bottom: 0%"></img></div>
+        <div class="Continaer100 ui-fluid">
+            <div class="Card">
+                <div class="BigTopic">Ingresar Modelos Vivienda</div>
+                <div class="Separator"/>
+                <br />
+                <h:form id="PrincipalForm">
+                    <div class="Continaer50">
+                    <p:growl id="msg" showDetail="true" life="3000" />
+                    <p:growl id="message" showDetail="true" />
+                    <p:growl id="message1" showDetail="true" />
+                    <p:panelGrid id="panelIngreso" columns="2" style="border: none" layout="grid">
+                        <p:outputLabel  value="Codigo Modelo:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputText id="idmodleo" value="#{viviendaController.idVivienda}" required="true" requiredMessage="El campo Codigo es requerido"/>
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="Nombre Modelo:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputText id="nomModelo" value="#{viviendaController.nomVivienda}" required="true" requiredMessage="El campo Nombre es requerido" />
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="Costo:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputText id="costo" value="#{viviendaController.costo}" required="true" requiredMessage="El camppo costo es requerido" />
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="Incluye:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputText id="incluye" value="#{viviendaController.incluye}" required="true" requiredMessage="El campo incluye es requerido" />
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="Area Construida M2:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputText id="area" value="#{viviendaController.area}" required="true" requiredMessage="El campo Area es requerido" />
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="Descripcion:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputTextarea id="descripcion" value="#{viviendaController.descripcion}" cols="38" rows="3" required="true" requiredMessage="El campo Descripcion es requerido"/>
+                        <div class="EmptyBox40"/>
+                    </p:panelGrid>
+                    </div>
+                    <br/>
+                    <p:dataTable id="datalist" var="item" value="#{viviendaController.listadoViviendas}" rowKey="#{item.idModelo}" paginator="true" rows="10"
+                                 rowSelectMode="single" selectionMode="single" selection="#{viviendaController.selectedVivienda}"
+                                 rowsPerPageTemplate="10,20,30,40,50,60,70,80,90,100" reflow="true">
+                        <p:ajax event="rowSelect" listener="#{viviendaController.onRowSelectVivienda(event)}" update=":PrincipalForm:actualizaViviendas :PrincipalForm:msg" />
+                        <p:column>
+                            <f:facet name="header">
+                                Codigo Modelo
+                            </f:facet>
+                            <h:outputText id="idmodelo" value="#{item.idModelo}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Nombre Modelo
+                            </f:facet>
+                            <h:outputText id="nom_modelo" value="#{item.nombreModelo}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Costo
+                            </f:facet>
+                            <h:outputText id="costomodelo" value="#{item.costo}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Incluye
+                            </f:facet>
+                            <h:outputText id="incluyemodelo" value="#{item.incluye}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Area Construida M2
+                            </f:facet>
+                            <h:outputText id="areamodelo" value="#{item.areaConstruida}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Descripcion
+                            </f:facet>
+                            <h:outputText id="desmodelo" value="#{item.descripcion}" />
+                        </p:column>
+                    </p:dataTable>
+                    <br/>
+                    <p:panelGrid columns="5" style="border: none" layout="grid">
+                        <p:commandButton id="guardar" icon="fa fa-floppy-o" value="Guardar" title="Guardar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" actionListener="#{viviendaController.guardar()}" update=":PrincipalForm:msg" process="@this,:PricipalForm:panelIngreso" />
+                        <p:commandButton id="actualizar" icon="fa fa-refresh" value="Actualizar" title="Actualizar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" process=":PrincipalForm:datalist" update=":PrincipalForm:actualizaViviendas :PrincipalForm:datalist" oncomplete="PF('actualizaViviendasDialog').show()" />
+                        <p:commandButton id="eliminar" icon="fa fa-minus" value="Eliminar" title="Eliminar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />
+                        <p:commandButton id="cancelar" icon="fa fa-times" value="Cancelar" title="Cancelar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" actionListener="#{viviendaController.limpiarForm()}" update="@form" process="@this,:PricipalForm:panelIngreso" />
+                    </p:panelGrid>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>
+                    
+                    <p:dialog id="actualizaViviendas" widgetVar="actualizaViviendasDialog" modal="true" resizable="false" showEffect="fade" hideEffect="fade" header="Actualizacion de Mejoras">
+                        <p:panelGrid id="mostrar" columns="2" >
+
+                            <p:outputLabel value="Codigo Modelo"  />
+                            <p:outputLabel value="#{viviendaController.idVivienda_modal}" />
+                            
+                            <p:outputLabel value="Nombre Modelo" />
+                            <p:inputText value="#{viviendaController.nomVivienda_modal}" />
+                            
+                            <p:outputLabel value="Costo" />
+                            <p:inputText value="#{viviendaController.costo_modal}" />
+                            
+                            <p:outputLabel value="Incluye" />
+                            <p:inputTextarea cols="30" rows="3" value="#{viviendaController.incluye_modal}" />
+                            
+                            <p:outputLabel value="Area Construida M2" />
+                            <p:inputText value="#{viviendaController.area_modal}" />
+                            
+                            <p:outputLabel value="Descripcion" />
+                            <p:inputTextarea cols="30" rows="3" value="#{viviendaController.descripcion_modal}" />
+                            
+                        </p:panelGrid>
+                        <br />
+                        <p:panelGrid columns="5" style="border: none" layout="grid">
+                            <p:commandButton id="actualizar_modal" icon="fa fa-refresh" value="Actualizar" action="#{viviendaController.actualizarVivienda()}"  update="@form" process="@this, PrincipalForm:mostrar :PrincipalForm:datalist :PrincipalForm:message1" oncomplete="handleSubmit(args,'actualizaViviendasDialog');" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />
+                        </p:panelGrid>
+                    </p:dialog>
+                </h:form>
+            </div>
+        </div>
+            <footer id="footer"><div align="right" class="container_12">
+                <div class="footer-icon align-right">&copy; Todos los derechos reservados. 2016 UES FMP</div>
+        </div>
+    </footer>
+    </ui:define>
+</ui:composition>

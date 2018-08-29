@@ -1,0 +1,47 @@
+
+@font-face {
+    font-family: "exosemibold";
+    font-style: normal;
+    font-weight: normal;
+    src: url("") format("embedded-opentype"), url("/showcase/javax.faces.resource/main/fonts/exo-semibold-webfont.woff.xhtml") format("woff"), url("/showcase/javax.faces.resource/main/fonts/exo-semibold-webfont.ttf.xhtml") format("truetype"), url("") format("svg");
+}
+@font-face {
+    font-family: "exobolditalic";
+    font-style: normal;
+    font-weight: normal;
+    src: url("") format("embedded-opentype"), url("/showcase/javax.faces.resource/main/fonts/exo-bolditalic-webfont.woff.xhtml") format("woff"), url("/showcase/javax.faces.resource/main/fonts/exo-bolditalic-webfont.ttf.xhtml") format("truetype"), url("") format("svg");
+}
+@font-face {
+    font-family: "exomedium";
+    font-style: normal;
+    font-weight: normal;
+    src: url("") format("embedded-opentype"), url("/showcase/javax.faces.resource/main/fonts/exo-medium-webfont.woff.xhtml") format("woff"), url("/showcase/javax.faces.resource/main/fonts/exo-medium-webfont.ttf.xhtml") format("truetype"), url("") format("svg");
+}
+@font-face {
+    font-family: "exoregular";
+    font-style: normal;
+    font-weight: normal;
+    src: url("") format("embedded-opentype"), url("/showcase/javax.faces.resource/main/fonts/exo-regular-webfont.woff.xhtml") format("woff"), url("/showcase/javax.faces.resource/main/fonts/exo-regular-webfont.ttf.xhtml") format("truetype"), url("") format("svg");
+}
+body {
+    background-color: #20272a;
+    font-family: "exoregular","Trebuchet MS",Arial,Helvetica,sans-serif;
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.ui-widget {
+  font-size: 13px !important;
+}
+.ui-panelmenu-panel{
+    border: 1px solid transparent;
+    margin: 5px 10px;
+    position: relative;
+     font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    text-transform: uppercase;
+}
+  

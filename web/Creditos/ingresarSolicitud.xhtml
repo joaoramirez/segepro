@@ -1,0 +1,341 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui" template="../WEB-INF/template.xhtml">
+    <h:head>
+        <!--        <link rel="stylesheet" href="../Repositorio/font-awesome-4.7.0/css/font-awesome.min.css"></link>
+                <link rel="stylesheet" href="../resources/olympos-layout/css/core-layout.css"></link>
+                <link rel="stylesheet" href="../resources/olympos-layout/css/olympos-layout.css"></link>
+                <link rel="stylesheet" href="../resources/olympos-layout/css/olympos-font.css"></link>
+                <link rel="stylesheet" href="../resources/olympos-layout/css/animate.css"></link>
+                <link rel="stylesheet" href="../resources/olympos-layout/css/nanoscroller.css"></link>
+                <link rel="stylesheet" href="../resources/olympos-layout/css/font-awsone.css"></link>-->
+        <title>Gerencia de Agencia :: SEGEPRO</title>
+    </h:head>
+    <ui:define name="body" >
+        <div class="logo" style="margin-top:1%; margin-right:0%"><img src="../img/logo-hphes.png"  style=" width:10%;margin-left:85%;height:10%;margin-bottom: 0%"></img></div>
+        <div class="Continaer100 ui-fluid">
+            <div class="Card">
+                <div class="BigTopic">INGRESAR SOLICITUD</div>
+                <div class="Separator"/>
+                <br />
+                <h:form id="PrincipalForm">
+                    <p:growl id="msg" showDetail="true" life="3000" />
+                    <p:growl id="message" showDetail="true" />
+                    <p:growl id="message1" showDetail="true" />
+
+                    <p:panel style="margin-bottom:10px;">
+                        <!--<p:commandButton id="agregar" icon="fa fa-plus" value="Agregar" title="Agregar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />-->
+
+                        <p:panelGrid id="panelIngreso1" columns="6" style="border: none" layout="grid">
+                            <p:outputLabel value="Código Solicitante:" />
+                            <p:inputText id="codSoli" value="#{solicitudController.idCliente}" required="true" requiredMessage="Campo Codigo es Requerido." style="width: 80%" />
+                            <p:outputLabel value="Nombre Solicitante:" />
+                            <p:inputText id="nomSoli" value="#{solicitudController.nomCliente}" required="true" requiredMessage="Campo Nombre Solicitante es Requerido." />
+                            <p:commandButton id="agregar"  icon="fa fa-plus" title="Agregar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" process="@this" update=":PrincipalForm:agregarSolicitante" oncomplete="PF('agregarSolicitanteDialog').show()" />
+                        </p:panelGrid>
+                        <div class="Container50 Responsive">
+                            <p:panelGrid id="panelIngreso2" columns="1" style="border: none" layout="grid">
+                                <p:outputLabel value="Número Solicitud:" />
+                                <p:inputText id="numSoli" value="#{solicitudController.numSolicitud}" required="true" requiredMessage="Campo Numero de Solicitud es Requerido." style="width: 40%" />
+                                <p:outputLabel value="Fecha:" />
+                                <p:calendar id="fechaSoli" pattern="dd/MM/yyyy" mask="99/99/9999" value="#{solicitudController.fechaEmision}" title="Fecha" showOn="button" required="true" requiredMessage="El campo Fecha es requerido" style="width: 40%" tabindex="8" />
+                                <p:outputLabel value="Oficina Reginal:" />
+                                <p:inputText id="oficinaReg" value="#{solicitudController.oficinaRegional}" required="true" requiredMessage="Campo Oficina Reginal es Requerido." />
+                                <p:outputLabel value="Comunidad:" />
+                                <p:inputText id="comunidad" value="#{solicitudController.comunidad}" required="true" requiredMessage="Campo Nombres Referencia es Requerido." />
+                                <p:outputLabel  value="Estado de la Solicitud:" />
+                                <p:selectOneMenu value="#{solicitudController.estado}" required="true" requiredMessage="Campo Estado es Requerido."  >
+                                    <p:ajax event="itemSelect"  />
+                                    <f:selectItem itemLabel="--Seleccione--" itemValue="#{null}" />
+                                    <f:selectItem itemLabel="Grabada" itemValue="Grabada" />
+                                    <f:selectItem itemLabel="Emitida" itemValue="Emitida" />
+                                    <f:selectItem itemLabel="Anulada" itemValue="Anulada" />
+                                    <f:selectItem itemLabel="Aprobada" itemValue="Aprobada" />
+                                    <f:selectItem itemLabel="Observada" itemValue="Observada" />
+                                    <f:selectItem itemLabel="Denegada" itemValue="Denegada" />
+                                </p:selectOneMenu>
+                                <p:outputLabel  value="Destino del crédito:" />
+                                <p:selectOneMenu value="#{solicitudController.destinoCredito}" required="true" requiredMessage="El campo Destino del crédito es Requerido."  >
+                                    <p:ajax event="itemSelect" listener="#{solicitudController.onChangeDestino()}" update=":PrincipalForm:mod" />
+                                    <f:selectItem itemLabel="--Seleccione--" itemValue="#{null}" />
+                                    <f:selectItem itemLabel="Compra de Vivienda Usada" itemValue="Compra de Vivienda Usada" />
+                                    <f:selectItem itemLabel="Construc. de Vivienda + Compra de Terreno" itemValue="Construc. de Vivienda + Compra de Terreno" />
+                                    <f:selectItem itemLabel="Construcción de Vivienda" itemValue="Construcción de Vivienda" />
+                                    <f:selectItem itemLabel="Mejora de Vivienda" itemValue="Mejora de Vivienda" />
+                                </p:selectOneMenu>
+                                <p:outputLabel value="Mod. Vivienda/ Tipo de Mejora:" />
+                                <p:selectOneMenu id="mod" value="#{solicitudController.modeloVivienda}" required="true" requiredMessage="Campo Parentesco es Requerido." >
+                                    <p:ajax event="itemSelect" listener="#{solicitudController.onChangeModelo()}" update=":PrincipalForm:presupuesto :PrincipalForm:montoSoli" />
+                                    <f:selectItem itemLabel="--Seleccione--" itemValue="#{null}" />
+                                    <f:selectItems value="#{solicitudController.listado}"
+                                                   var="listadoItem"
+                                                   itemLabel="#{listadoItem[1]}"
+                                                   itemValue="#{listadoItem[0]}" />
+                                </p:selectOneMenu>
+                                <p:outputLabel  value="Periodo para pagar:" />
+                                <p:selectOneMenu value="#{solicitudController.fechaPago}" required="true" requiredMessage="El campo Periodo para pagar es Requerido." >
+                                    <p:ajax event="itemSelect" />
+                                    <f:selectItem itemLabel="--Seleccione--" itemValue="#{null}" />
+                                    <f:selectItem itemLabel="Semanal" itemValue="Semanal" />
+                                    <f:selectItem itemLabel="Quincenal" itemValue="Quincenal" />
+                                    <f:selectItem itemLabel="Mensual" itemValue="Mensual" />
+                                </p:selectOneMenu>
+                                <p:outputLabel value="Plazo Solicitado[Meses]:" />
+                                <h:panelGrid columns="1" style="margin-bottom: 10px">
+                                    <p:inputText id="plazo" value="#{solicitudController.plazo}" />
+                                    <p:slider for="plazo" step="12" maxValue="120">
+                                        <p:ajax event="slideEnd" listener="#{solicitudController.onSlideEnd}" update=":PrincipalForm:cantCuota :PrincipalForm:montoCuota :PrincipalForm:msg" />
+                                    </p:slider>
+                                </h:panelGrid>
+                            </p:panelGrid>
+                        </div>
+                        <div class="Container50 Responsive">
+                            <p:panelGrid id="panelIngreso3" columns="1" style="border: none" layout="grid">
+                                <p:outputLabel value="Dueño de la propiedad:" />
+                                <p:inputText id="duePropiedad" value="#{solicitudController.duenioPropiedad}" required="true" requiredMessage="Campo Telefono es Requerido."  />
+                                <p:outputLabel  value="Parentesco:" />
+                                <p:selectOneMenu value="#{solicitudController.parentesco}" required="true" requiredMessage="Campo Parentesco es Requerido."  >
+                                    <p:ajax event="itemSelect"  />
+                                    <f:selectItem itemLabel="--Seleccione--" itemValue="#{null}" />
+                                    <f:selectItem itemLabel="Amigo" itemValue="Amigo" />
+                                    <f:selectItem itemLabel="Vecino" itemValue="Vecino" />
+                                    <f:selectItem itemLabel="Pariente" itemValue="Pariente" />
+                                    <f:selectItem itemLabel="Compañero de trabajo" itemValue="Compañero de trabajo" />
+                                    <f:selectItem itemLabel="Otro" itemValue="Otro" />
+                                </p:selectOneMenu>
+                                <p:outputLabel value="Detalle de la obra a realizar:" />
+                                <p:inputTextarea id="detalleObra" value="#{solicitudController.detalleObra}" required="true" requiredMessage="El campo Detalle de la obra es Requerido."  />
+                                <p:outputLabel value="Presupuesto de la obra:" />
+                                <p:inputNumber id="presupuesto" value="#{solicitudController.presupuesto}" symbol=" $" symbolPosition="p" decimalSeparator="." thousandSeparator="," required="true" requiredMessage="El campo Presupuesto es Requerido." >  </p:inputNumber> 
+                                <p:outputLabel value="Monto Solicitado:" />
+                                <p:inputNumber id="montoSoli" value="#{solicitudController.montoSolicitado}" symbol=" $" symbolPosition="p" decimalSeparator="." thousandSeparator="," required="true" requiredMessage="El campo Monto Solicitado es Requerido." >  </p:inputNumber> 
+                                <p:outputLabel value="Cantidad Cuotas:" />
+                                <p:inputText id="cantCuota" value="#{solicitudController.cantCuota}" required="true" requiredMessage="El campo Cuota Solicitado es Requerido." />
+                                <p:outputLabel value="Monto Cuotas:" />
+                                <p:inputNumber id="montoCuota" value="#{solicitudController.cuota}" symbol=" $" symbolPosition="p" decimalSeparator="." thousandSeparator="," required="true" requiredMessage="El campo Cuota Solicitado es Requerido." >  </p:inputNumber> 
+                                <p:outputLabel  value="Forma de Pago:" />
+                                <p:selectOneMenu value="#{solicitudController.formaPago}" required="true" requiredMessage="El campo Forma de pago es Requerido." >
+                                    <p:ajax event="itemSelect"   />
+                                    <f:selectItem itemLabel="--Seleccione--" itemValue="#{null}" />
+                                    <f:selectItem itemLabel="Efectivo" itemValue="Efectivo" />
+                                    <f:selectItem itemLabel="Descuento a planilla" itemValue="Descuento a planilla" />
+                                </p:selectOneMenu>
+                            </p:panelGrid>
+                        </div>
+                        <div class="EmptyBox40"/>
+                        <p:panelGrid id="panelIngreso4" columns="1" style="border: none" layout="grid">
+                            <p:outputLabel value="(Uso exclusivo HPH) Comentario sobre la iniciativa del solicitante:" />
+                            <div class="EmptyBox5"/>
+                            <p:inputTextarea id="comentarioU" value="#{solicitudController.comentarioIniciativa}" required="true" requiredMessage="Campo Lugar de Trabajo es Requerido."  />
+                            <p:outputLabel value="(Uso exclusivo HPH) Comentario sobre la evaluación y estabilidad:" />
+                            <div class="EmptyBox5"/>
+                            <p:inputTextarea id="comentarioD" value="#{solicitudController.comentarioEvaluacion}" required="true" requiredMessage="Campo Lugar de Trabajo es Requerido."  />
+                            <p:outputLabel value="(Uso exclusivo HPH)Comentario sobre garantía ofrecida (lugar de trabajo, salario, tiempo, descuentos, etc.):" />
+                            <div class="EmptyBox5"/>
+                            <p:inputTextarea id="comentarioT" value="#{solicitudController.comentarioGarantia}" required="true" requiredMessage="Campo Lugar de Trabajo es Requerido."  />
+                        </p:panelGrid>
+                        <div class="EmptyBox40"/>
+                        <p:dataTable id="datalist" var="item" paginator="true" rows="10" value="#{solicitudController.listadoSolicitud}"
+                                     rowKey="#{item.solicitudPK.idCliente}" rowSelectMode="single" selectionMode="single" selection="#{solicitudController.selectedSolicitud}"
+                                     rowsPerPageTemplate="10,20,30,40,50,60,70,80,90,100" reflow="true">
+                            <p:ajax event="rowSelect" update=":PrincipalForm:actualizaSolicitud :PrincipalForm:msg" />
+                            <p:column>
+                                <f:facet name="header">
+                                    Código Solicitante
+                                </f:facet>
+                                <h:outputText value="#{item.solicitudPK.idCliente}" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Número Solicitud
+                                </f:facet>
+                                <h:outputText value="#{item.solicitudPK.numSolicitud}" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Nombre Solicitante
+                                </f:facet>
+                                <h:outputText value="#{item.nomCliente}" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Fecha
+                                </f:facet>
+                                <h:outputText value="#{item.fechaEmision}" >
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Estado Solicitud
+                                </f:facet>
+                                <h:outputText value="#{item.estado}" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Destino del Crédito
+                                </f:facet>
+                                <h:outputText value="#{item.destinoCredito}" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Presupuesto
+                                </f:facet>
+                                <h:outputText value="#{item.presupuesto}" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Cuota
+                                </f:facet>
+                                <h:outputText value="#{item.cuota}" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Período para Pagar
+                                </f:facet>
+                                <h:outputText value="#{item.fechaPago}" />
+                            </p:column>
+                        </p:dataTable>
+                        <br/>
+                        <p:panelGrid columns="6" style="border: none" layout="grid">
+                            <p:commandButton id="guardar" icon="fa fa-floppy-o" value="Guardar" title="Guardar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" actionListener="#{solicitudController.guardar()}" update="@form" process="@this,:PrincipalForm:panelIngreso1,:PrincipalForm:panelIngreso2,:PrincipalForm:panelIngreso3,:PrincipalForm:panelIngreso4"/>
+                            <p:commandButton id="actualizar" icon="fa fa-refresh" value="Actualizar" title="Actualizar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" process="@this,:PrincipalForm:datalist" update=":PrincipalForm:actualizaSolicitud :PrincipalForm:datalist" oncomplete="PF('actualizaSolicitudDialog').show()" />
+                            <p:commandButton id="generar" icon="fa fa-print" value="Generar reporte" title="Generar reporte" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" ajax="false" immediate="true" action="#{solicitudController.imprimirReporte()}" />
+                            <p:commandButton id="emitir" icon="fa fa-minus" value="Emitir" title="Emitir" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" action="#{solicitudController.emitirSolicitud()}" process="@this" update=":PrincipalForm:actualizaSolicitud :PrincipalForm:datalist" immediate="true" />
+                            <p:commandButton id="cancelar" icon="fa fa-times" value="Cancelar" title="Cancelar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" actionListener="#{solicitudController.limpiarForm()}" update="@form" process="@this,:PrincipalForm:panelIngreso1,:PrincipalForm:panelIngreso2,:PrincipalForm:panelIngreso3,:PrincipalForm:panelIngreso4" />
+                        </p:panelGrid>
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                            <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </p:confirmDialog>
+
+                        <p:dialog id="agregarSolicitante" widgetVar="agregarSolicitanteDialog" modal="true" resizable="false" width="550" showEffect="fade" hideEffect="fade" header="Agregar Solicitante">
+                            <p:dataTable id="datalistSolicitante" var="item" paginator="true" rows="10" value="#{solicitudController.listadoClientes}" selection="#{solicitudController.selectedCliente}"
+                                         selectionMode="single" rowSelectMode="single" rowKey="#{item.idCliente}" rowsPerPageTemplate="10,20,30,40,50,60,70,80,90,100" reflow="true">
+                                <p:ajax event="rowSelect" />
+                                <p:column>
+                                    <f:facet name="header">
+                                        Codigo Solicitante
+                                    </f:facet>
+                                    <h:outputText value="#{item.idCliente}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        Nombres Solicitante
+                                    </f:facet>
+                                    <h:outputText value="#{item.nombre}" ></h:outputText>
+                                </p:column>
+                            </p:dataTable>
+                            <br />
+                            <p:panelGrid columns="5" style="border: none" layout="grid">
+                                <p:commandButton id="agregar_modalSol" icon="fa fa-plus" value="Agregar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" process="@this" actionListener="#{solicitudController.agregarModal()}" update="PrincipalForm:panelIngreso1" />
+                            </p:panelGrid>
+                        </p:dialog>
+
+                        <p:dialog id="actualizaSolicitud" widgetVar="actualizaSolicitudDialog" modal="true" resizable="false" showEffect="fade" hideEffect="fade" header="Actualizacion de Solicitud">
+                            <p:panelGrid id="mostrar" columns="2" >
+
+                                <p:outputLabel value="Número de Solucitud"  />
+                                <p:outputLabel value="#{solicitudController.selectedSolicitud.solicitudPK.numSolicitud}" />
+
+                                <p:outputLabel value="Codigo Solicitante"  />
+                                <p:outputLabel value="#{solicitudController.selectedSolicitud.solicitudPK.idCliente}" />
+
+                                <p:outputLabel value="Fecha" />
+                                <p:inputText value="#{solicitudController.selectedSolicitud.fechaEmision}" />
+
+                                <p:outputLabel value="Oficina Reginal"  />
+                                <p:outputLabel value="#{solicitudController.selectedSolicitud.oficinaRegional}" />
+
+                                <p:outputLabel value="Comunidad" />
+                                <p:inputText value="${solicitudController.selectedSolicitud.comunidad}" />
+
+                                <p:outputLabel value="Estado de la Solicitud" />
+                                <p:selectOneMenu value="#{solicitudController.selectedSolicitud.estado}" >
+                                    <p:ajax event="itemSelect" />
+                                    <f:selectItem itemLabel="--Seleccione--" itemValue="${null}" />
+                                    <f:selectItem itemLabel="Grabada" itemValue="Grabada" />
+                                    <f:selectItem itemLabel="Emitida" itemValue="Emitida" />
+                                    <f:selectItem itemLabel="Anulada" itemValue="Anulada" />
+                                    <f:selectItem itemLabel="Aprobada" itemValue="Aprobada" />
+                                    <f:selectItem itemLabel="Observada" itemValue="Observada" />
+                                    <f:selectItem itemLabel="Denegada" itemValue="Denegada" />
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="Plazo Solicitado" />
+                                <!--<p:inputText value="#{solicitudController.selectedSolicitud.plazo}" />-->
+
+                                <p:outputLabel value="Destino del Crédito" />
+                                <p:selectOneMenu value="#{solicitudController.selectedSolicitud.destinoCredito}" >
+                                    <p:ajax event="itemSelect" />
+                                    <f:selectItem itemLabel="--Seleccione--" itemValue="#{null}" />
+                                    <f:selectItem itemLabel="Compra de Vivienda + Terreno" itemValue="Compra de Vivienda + Terreno" />
+                                    <f:selectItem itemLabel="Construcción de Vivienda" itemValue="Construcción de Vivienda" />
+                                    <f:selectItem itemLabel="Mejora de Vivienda" itemValue="Mejora de Vivienda" />
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="Mod. Vivienda/ Tipo de Mejora" />
+                                <p:selectOneMenu value="#{solicitudController.selectedSolicitud.modeloVivienda}" >
+                                    <p:ajax event="itemSelect" />
+                                    <f:selectItem itemLabel="--Seleccione--" itemValue="#{null}" />
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="Dueño de la propiedad" />
+                                <p:inputText value="#{solicitudController.selectedSolicitud.duenioPropiedad}" />
+
+                                <p:outputLabel value="Parentesco" />
+                                <p:selectOneMenu value="#{solicitudController.selectedSolicitud.parentesco}" >
+                                    <p:ajax event="itemSelect" />
+                                    <f:selectItem itemLabel="--Seleccione--" itemValue="#{null}" />
+                                    <f:selectItem itemLabel="Amigo" itemValue="Amigo" />
+                                    <f:selectItem itemLabel="Vecino" itemValue="Vecino" />
+                                    <f:selectItem itemLabel="Pariente" itemValue="Pariente" />
+                                    <f:selectItem itemLabel="Compañero de trabajo" itemValue="Compañero de trabajo" />
+                                    <f:selectItem itemLabel="Otro" itemValue="Otro" />
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="Detalle de la obra a realizar" />
+                                <p:inputTextarea value="#{solicitudController.selectedSolicitud.detalleObra}" />
+
+                                <p:outputLabel value="Presupuesto de la obra" />
+                                <p:inputText value="#{solicitudController.selectedSolicitud.presupuesto}" />
+
+                                <p:outputLabel value="Monto Solicitado" />
+                                <p:inputText value="#{solicitudController.selectedSolicitud.montoSolicitado}" />
+
+                                <p:outputLabel value="Cuota Solicitada" />
+                                <p:inputText value="#{solicitudController.selectedSolicitud.cuota}" />
+
+                                <p:outputLabel value="Periodo para pagar" />
+                                <p:selectOneMenu value="#{solicitudController.selectedSolicitud.fechaPago}" >
+                                    <p:ajax event="itemSelect" />
+                                    <f:selectItem itemLabel="--Seleccione--" itemValue="#{null}" />
+                                    <f:selectItem itemLabel="Semanal" itemValue="Semanal" />
+                                    <f:selectItem itemLabel="Quincenal" itemValue="Quincenal" />
+                                    <f:selectItem itemLabel="Mensual" itemValue="Mensual" />
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="Forma de Pago" />
+                                <p:selectOneMenu value="#{solicitudController.selectedSolicitud.formaPago}" >
+                                    <p:ajax event="itemSelect" />
+                                    <f:selectItem itemLabel="--Seleccione--" itemValue="#{null}" />
+                                    <f:selectItem itemLabel="Efectivo" itemValue="Semanal" />
+                                    <f:selectItem itemLabel="Descuento a planilla" itemValue="Quincenal" />
+                                </p:selectOneMenu>
+
+                            </p:panelGrid>
+                            <br />
+                            <p:panelGrid columns="5" style="border: none" layout="grid">
+                                <p:commandButton id="actualizar_modal" icon="fa fa-refresh" value="Actualizar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />
+                                <!-- <p:commandButton id="cancelar_modal" icon="fa fa-times" value="Cerrar" onclick="PF('actualizaAgenciasDialog').hide()" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />-->
+                            </p:panelGrid>
+                        </p:dialog>
+                    </p:panel>
+                </h:form>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>

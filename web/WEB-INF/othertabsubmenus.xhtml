@@ -1,0 +1,661 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:po="http://primefaces.org/olympos">
+
+    <ul class="layout-tab-submenu" id="layout-messages">
+        <li>
+            <a>CRÉDITOS</a>
+            <ul>
+                <div class="EmptyBox10"></div>
+
+                <li><a href="/SEGEPRO_V2/faces/Creditos/ingresarSolicitud.xhtml" class="menulink"> <i class="icon-bell60 Red"></i>
+<!--                        <span class="Fs10 DispBlock">Today</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Ingresar Solicitud</span>
+                        <!--<span class="DispBlock FontLatoLight">Hi Luke, Cursus est primis euismod auctor sem nascetur est laoreet sagittis dui montes suscipit tristique lorem potenti</span>-->
+                    </a></li>
+
+                <div class="EmptyBox10"></div>
+
+<!--                <li><a href="/SEGEPRO_V2/faces/Creditos/ingresarCreditos.xhtml" class="menulink"> <i class="icon-bell60 Blue"></i>
+                        <span class="Fs10 DispBlock">Today</span>
+                        <div class="EmptyBox5"></div>
+                        <span class="DispBlock White Fs14 FontLatoRegular">Ingresar Crédito</span>
+                        <span class="DispBlock FontLatoLight">Hi Luke, Cursus est primis euismod auctor sem nascetur est laoreet sagittis dui montes suscipit tristique lorem potenti</span>
+                    </a></li>-->
+
+                <div class="EmptyBox10"></div>
+
+                <li><a href="/SEGEPRO_V2/faces/Creditos/evaluacionPersonal.xhtml" class="menulink"> <i class="icon-bell60 Green"></i>
+   <!--                     <span class="Fs10 DispBlock">Yesterday</span>
+                         <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Evaluación Personal</span>
+             <!--            <span class="DispBlock FontLatoLight">Hi Luke, Cursus est primis euismod auctor sem nascetur est laoreet sagittis dui montes suscipit tristique lorem potenti</span>
+                    --></a></li>
+
+                <div class="EmptyBox10"></div>
+
+                <li><a href="/SEGEPRO_V2/faces/Creditos/evaluacionPersonal_Bienes.xhtml" class="menulink"> <i class="icon-bell60 Red"></i>
+<!--                     <span class="Fs10 DispBlock">Yesterday</span>
+                         <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Evaluación Personal - Bienes</span>
+             <!--            <span class="DispBlock FontLatoLight">Hi Luke, Cursus est primis euismod auctor sem nascetur est laoreet sagittis dui montes suscipit tristique lorem potenti</span>
+                    --> </a></li>
+
+                <div class="EmptyBox10"></div>
+
+                <li><a href="/SEGEPRO_V2/faces/Creditos/expedienteClienteJsf.xhtml" class="menulink"> <i class="icon-bell60 Blue"></i>
+<!--                     <span class="Fs10 DispBlock">Yesterday</span>
+                         <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Expediente Cliente</span>
+             <!--            <span class="DispBlock FontLatoLight">Hi Luke, Cursus est primis euismod auctor sem nascetur est laoreet sagittis dui montes suscipit tristique lorem potenti</span>
+                    --> </a></li>
+
+              <!--   <div class="EmptyBox10"></div>
+
+                <li><a href="#" class="menulink"> <i class="icon-bell60 Blue"></i>
+                        <span class="Fs10 DispBlock">4 days ago</span>
+                        <div class="EmptyBox5"></div>
+                        <span class="DispBlock White Fs14 FontLatoRegular">Boba Fett</span>
+                        <span class="DispBlock FontLatoLight">Hi Luke, Cursus est primis euismod auctor sem nascetur est laoreet sagittis dui montes suscipit tristique lorem potenti</span>
+                    </a></li>-->
+            </ul>
+        </li>
+    </ul>
+
+<!--    <ul class="layout-tab-submenu" id="layout-settings">
+        <li>
+            <a class="TexAlCenter">USER SETTINGS</a>
+            <ul>
+                <div class="EmptyBox20"></div>
+                <li><a href="#" class="menulink TexAlCenter"> <i class="icon-user106 Yellow Fs30 Wid100 Fnone"></i> Account Settings</a></li>
+                <div class="EmptyBox20"></div>
+                <li><a href="#" class="menulink TexAlCenter"> <i class="icon-envelope80 Yellow Fs30 Wid100 Fnone"></i> E-Mail Settings</a></li>
+                <div class="EmptyBox20"></div>
+                <li><a href="#" class="menulink TexAlCenter"> <i class="icon-turn20 Yellow Fs30 Wid100 Fnone"></i> Notification Settings</a></li>
+                <div class="EmptyBox20"></div>
+                <li><a href="#" class="menulink TexAlCenter"> <i class="icon-web-design4 Yellow Fs30 Wid100 Fnone"></i> Screen Settings</a></li>
+                <div class="EmptyBox20"></div>
+                <li><a href="#" class="menulink TexAlCenter"> <i class="icon-updated Yellow Fs30 Wid100 Fnone"></i> Security Settings</a></li>
+            </ul>
+        </li>
+    </ul>-->
+
+    <ul class="layout-tab-submenu" id="layout-settings">
+        <li>
+            <a>CONSTRUCCIÓN</a>
+            <div class="EmptyBox10"></div>
+            <ul>
+                <li><a href="/SEGEPRO_V2/faces/Construccion/supervisiones.xhtml" class="menulink"> <i class="icon-verification Red"></i>
+<!--                       <span class="Fs10 DispBlock">Today</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Supervision Preliminar/Semanal</span>
+                        <!--<span class="DispBlock FontLatoLight">18.08.2016</span>-->
+                    </a></li>
+<!--                <li><a href="/SEGEPRO_V2/faces/Construccion/supervisionSemanal.xhtml" class="menulink"> <i class="icon-verification Red"></i>
+                       <span class="Fs10 DispBlock">Today</span>
+                        <div class="EmptyBox5"></div>
+                        <span class="DispBlock White Fs14 FontLatoRegular">Supervision Semanal</span>
+                        <span class="DispBlock FontLatoLight">18.08.2016</span>
+                    </a></li>-->
+                <li><a href="/SEGEPRO_V2/faces/Construccion/ingresoProgramas.xhtml" class="menulink"> <i class="icon-verification Yellow"></i>
+<!--                       <span class="Fs10 DispBlock">Today</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Ingreso Programas</span>
+                        <!--<span class="DispBlock FontLatoLight">13.08.2016</span>-->
+                    </a></li>
+                <li><a href="/SEGEPRO_V2/faces/Construccion/ingresoProyectos.xhtml" class="menulink"> <i class="icon-verification Green"></i>
+<!--                        <span class="Fs10 DispBlock">Today</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Ingreso Proyectos</span>
+                        <!--<span class="DispBlock FontLatoLight">12.08.2016</span>-->
+                    </a></li>
+                <li><a href="/SEGEPRO_V2/faces/Construccion/ingresoServicios.xhtml" class="menulink"> <i class="icon-verification Green"></i>
+<!--                        <span class="Fs10 DispBlock">Today</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Ingreso Servicios</span>
+                        <!--<span class="DispBlock FontLatoLight">12.08.2016</span>-->
+                    </a></li>
+                <li><a href="/SEGEPRO_V2/faces/Construccion/presupuestoProyecto.xhtml" class="menulink"> <i class="icon-verification Red"></i>
+<!--                        <span class="Fs10 DispBlock">Today</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Presupuesto Proyecto</span>
+                        <!--<span class="DispBlock FontLatoLight">18.08.2016</span>-->
+                    </a></li>
+                <li><a href="/SEGEPRO_V2/faces/Construccion/ordenCompra.xhtml" class="menulink"> <i class="icon-verification Blue"></i>
+<!--                        <span class="Fs10 DispBlock">Orden Compra</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Orden Compra</span>
+                        <!--<span class="DispBlock FontLatoLight">13.08.2016</span>-->
+                    </a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <ul class="layout-tab-submenu" id="layout-tasks">
+        <li>
+            <a>GEOPOSICIONAL</a>
+            <div class="EmptyBox10"></div>
+            <ul>
+                <li><a href="/SEGEPRO_V2/faces/Geopos/consultaGeoposAgencias.xhtml" class="menulink"> <i class="icon-verification Red"></i>
+<!--                        <span class="Fs10 DispBlock">Today</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Localización Agencias</span>
+                        <!--<span class="DispBlock FontLatoLight">18.08.2016</span>-->
+                    </a></li>
+<!--                <li><a href="#" class="menulink"> <i class="icon-verification Yellow"></i>
+                        <span class="Fs10 DispBlock">Today</span>
+                        <div class="EmptyBox5"></div>
+                        <span class="DispBlock White Fs14 FontLatoRegular">Call Project Manager</span>
+                        <span class="DispBlock FontLatoLight">13.08.2016</span>
+                    </a></li>
+                <li><a href="#" class="menulink"> <i class="icon-verification Green"></i>
+                       <span class="Fs10 DispBlock">Today</span>
+                        <div class="EmptyBox5"></div>
+                        <span class="DispBlock White Fs14 FontLatoRegular">Call Customers</span>
+                        <span class="DispBlock FontLatoLight">12.08.2016</span>
+                    </a></li>
+                <li><a href="#" class="menulink"> <i class="icon-verification Green"></i>
+                        <span class="Fs10 DispBlock">Today</span>
+                        <div class="EmptyBox5"></div>
+                        <span class="DispBlock White Fs14 FontLatoRegular">Set Reminders For Meetings</span>
+                        <span class="DispBlock FontLatoLight">12.08.2016</span>
+                    </a></li>
+                <li><a href="#" class="menulink"> <i class="icon-verification Red"></i>
+                        <span class="Fs10 DispBlock">Today</span>
+                        <div class="EmptyBox5"></div>
+                        <span class="DispBlock White Fs14 FontLatoRegular">Send PDF Reports To Manager</span>
+                        <span class="DispBlock FontLatoLight">18.08.2016</span>
+                    </a></li>
+                <li><a href="#" class="menulink"> <i class="icon-verification Blue"></i>
+                        <span class="Fs10 DispBlock">Today</span>
+                        <div class="EmptyBox5"></div>
+                        <span class="DispBlock White Fs14 FontLatoRegular">Call Project Manager</span>
+                        <span class="DispBlock FontLatoLight">13.08.2016</span>
+                    </a></li>
+                <li><a href="#" class="menulink"> <i class="icon-verification Green"></i>
+                        <span class="Fs10 DispBlock">Today</span>
+                        <div class="EmptyBox5"></div>
+                        <span class="DispBlock White Fs14 FontLatoRegular">Call Customers</span>
+                        <span class="DispBlock FontLatoLight">12.08.2016</span>
+                    </a></li>
+                <li><a href="#" class="menulink"> <i class="icon-verification Green"></i>
+                        <span class="Fs10 DispBlock">Today</span>
+                        <div class="EmptyBox5"></div>
+                        <span class="DispBlock White Fs14 FontLatoRegular">Set Reminders For Meetings</span>
+                        <span class="DispBlock FontLatoLight">12.08.2016</span>
+                    </a></li>-->
+            </ul>
+        </li>
+    </ul>
+
+    <ul class="layout-tab-submenu" id="layout-users">
+        <li>
+            <a>GERENCIA AGENCIAS</a>
+            <ul>
+                <div class="EmptyBox10"></div>
+                <li><a href="/SEGEPRO_V2/faces/GerenciaAgencia/listadoMejoras.xhtml" class="menulink OvHidden"> <i class="icon-pdf19 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Listado Mejoras</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs10 DispBlock">PDF File</span>
+                            <span class="DispBlock FontLatoLight Fs12">File Creation - 18.08.2016</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox20"></div>
+                <li><a href="/SEGEPRO_V2/faces/GerenciaAgencia/listadoModviv.xhtml" class="menulink OvHidden"> <i class="icon-pdf19 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Listado Mod. Vivienda</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs10 DispBlock">PDF File</span>
+                            <span class="DispBlock FontLatoLight Fs12">File Creation - 18.08.2016</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox20"></div>
+                <li><a href="/SEGEPRO_V2/faces/GerenciaAgencia/listadoClientes.xhtml" class="menulink OvHidden"> <i class="icon-pdf19 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Listado Clientes</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs10 DispBlock">PDF File</span>
+                            <span class="DispBlock FontLatoLight Fs12">File Creation - 18.08.2016</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="/SEGEPRO_V2/faces/GerenciaAgencia/listadoFiadores.xhtml" class="menulink OvHidden"> <i class="icon-pdf19 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Listado de Fiadores</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs10 DispBlock">PDF File</span>
+                            <span class="DispBlock FontLatoLight Fs12">File Creation - 18.08.2016</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox20"></div>
+                <li><a href="/SEGEPRO_V2/faces/GerenciaAgencia/precomite.xhtml" class="menulink OvHidden"> <i class="icon-doc2 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Precomite</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs10 DispBlock">PDF File</span>
+                            <span class="DispBlock FontLatoLight Fs12">File Creation - 18.08.2016</span>
+                        </span>
+                    </a></li>
+           <!--     <div class="EmptyBox20"></div>
+                <li><a href="#" class="menulink OvHidden"> <i class="icon-ppt Fs26 Orange"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">New Products</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs10 DispBlock">Presentation File</span>
+                            <span class="DispBlock FontLatoLight Fs12">File Creation - 18.08.2016</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink OvHidden"> <i class="icon-doc2 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Weekly Sales Reports</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs10 DispBlock">Text File</span>
+                            <span class="DispBlock FontLatoLight Fs12">File Creation - 18.08.2016</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox20"></div>
+                <li><a href="#" class="menulink OvHidden"> <i class="icon-pdf19 Fs26 Red"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Customer Help File</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs10 DispBlock">PDF File</span>
+                            <span class="DispBlock FontLatoLight Fs12">File Creation - 18.08.2016</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox20"></div>
+                <li><a href="#" class="menulink OvHidden"> <i class="icon-ppt Fs26 Orange"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">New Products</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs10 DispBlock">Presentation File</span>
+                            <span class="DispBlock FontLatoLight Fs12">File Creation - 18.08.2016</span>
+                        </span>
+                    </a></li>-->
+            </ul>
+        </li>
+    </ul>
+
+<ul class="layout-tab-submenu" id="layout-files">
+        <li>
+            <a>GERENCIA ÁREA</a>
+            <ul>
+                <div class="EmptyBox10"></div>
+                <li><a href="/SEGEPRO_V2/faces/GerenciaArea/ingresoAgencias.xhtml" class="menulink OvHidden"> <i class="icon-doc2 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Ingresar Agencias</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs10 DispBlock">Text File</span>
+                            <span class="DispBlock FontLatoLight Fs12">File Creation - 18.08.2016</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox20"></div>
+                <li><a href="/SEGEPRO_V2/faces/GerenciaArea/ingresoBrigadas.xhtml" class="menulink OvHidden"> <i class="icon-doc2 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Ingresar Brigadas</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs10 DispBlock">Text File</span>
+                            <span class="DispBlock FontLatoLight Fs12">File Creation - 18.08.2016</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox20"></div>
+                <li><a href="/SEGEPRO_V2/faces/GerenciaArea/ingresoVoluntarios.xhtml" class="menulink OvHidden"> <i class="icon-doc2 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Ingresar Voluntarios</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs10 DispBlock">Text File</span>
+                            <span class="DispBlock FontLatoLight Fs12">File Creation - 18.08.2016</span>
+                        </span>
+                    </a></li>
+                 <div class="EmptyBox10"></div>
+                <li><a href="/SEGEPRO_V2/faces/GerenciaArea/listadoAgencias.xhtml" class="menulink OvHidden"> <i class="icon-pdf19 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Listado Agencias</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs10 DispBlock">PDF File</span>
+                            <span class="DispBlock FontLatoLight Fs12">File Creation - 18.08.2016</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox20"></div>
+                <li><a href="/SEGEPRO_V2/faces/GerenciaArea/listadoProveedores.xhtml" class="menulink OvHidden"> <i class="icon-pdf19 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Listado Proveedores</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs10 DispBlock">PDF File</span>
+                            <span class="DispBlock FontLatoLight Fs12">File Creation - 18.08.2016</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox20"></div>
+                <li><a href="/SEGEPRO_V2/faces/GerenciaArea/listadoUsuario.xhtml" class="menulink OvHidden"> <i class="icon-pdf19 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Listado Usuarios</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs10 DispBlock">PDF File</span>
+                            <span class="DispBlock FontLatoLight Fs12">File Creation - 18.08.2016</span>
+                        </span>
+                    </a></li>
+          <!--     <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink OvHidden"> <i class="icon-doc2 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Weekly Sales Reports</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs10 DispBlock">Text File</span>
+                            <span class="DispBlock FontLatoLight Fs12">File Creation - 18.08.2016</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox20"></div>
+                <li><a href="#" class="menulink OvHidden"> <i class="icon-pdf19 Fs26 Red"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Customer Help File</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs10 DispBlock">PDF File</span>
+                            <span class="DispBlock FontLatoLight Fs12">File Creation - 18.08.2016</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox20"></div>
+                <li><a href="#" class="menulink OvHidden"> <i class="icon-ppt Fs26 Orange"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">New Products</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs10 DispBlock">Presentation File</span>
+                            <span class="DispBlock FontLatoLight Fs12">File Creation - 18.08.2016</span>
+                        </span>
+                    </a></li>-->
+            </ul>
+        </li>
+    </ul>
+
+    <ul class="layout-tab-submenu" id="layout-todos">
+        <li>
+            <a>MANTENIMIENTO</a>
+            <div class="EmptyBox10"></div>
+            <ul>
+                <li><a href="/SEGEPRO_V2/faces/Mantenimiento/ingresoInstituciones.xhtml" class="menulink"> <i class="icon-accept4 Green"></i>
+<!--                        <span class="Fs10 DispBlock">High Priority</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Ingreso de Instituciones</span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="/SEGEPRO_V2/faces/Mantenimiento/ingresoUnidades.xhtml" class="menulink"> <i class="icon-accept4 Green"></i>
+<!--                        <span class="Fs10 DispBlock">Mid Priority</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Ingreso de Unidades de Medida</span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="/SEGEPRO_V2/faces/Mantenimiento/ingresoProveedores.xhtml" class="menulink"> <i class="icon-accept4 Green"></i>
+<!--                        <span class="Fs10 DispBlock">Low Priority</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Ingreso de Proveedores</span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="/SEGEPRO_V2/faces/Mantenimiento/ingresoMejoras.xhtml" class="menulink"> <i class="icon-accept4 Green"></i>
+<!--                        <span class="Fs10 DispBlock">Low Priority</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Ingreso de Mejoras</span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="/SEGEPRO_V2/faces/Mantenimiento/ingresoViviendas.xhtml" class="menulink"> <i class="icon-accept4 Green"></i>
+<!--                        <span class="Fs10 DispBlock">High Priority</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Ingreso de Viviendas</span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="/SEGEPRO_V2/faces/Mantenimiento/ingresoClientes.xhtml" class="menulink"> <i class="icon-accept4 Green"></i>
+<!--                        <span class="Fs10 DispBlock">Mid Priority</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Ingreso de Clientes</span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="/SEGEPRO_V2/faces/Mantenimiento/ingresoRefPersonales.xhtml" class="menulink"> <i class="icon-accept4 Green"></i>
+<!--                        <span class="Fs10 DispBlock">Low Priority</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Ingreso de Referencias Personales</span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="/SEGEPRO_V2/faces/Mantenimiento/ingresoRecordCred.xhtml" class="menulink"> <i class="icon-accept4 Green"></i>
+<!--                        <span class="Fs10 DispBlock">Low Priority</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Ingreso de Record Crediticio</span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="/SEGEPRO_V2/faces/Mantenimiento/ingresarUsuarios.xhtml" class="menulink"> <i class="icon-accept4 Green"></i>
+<!--                        <span class="Fs10 DispBlock">Low Priority</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Ingreso de Usuarios</span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="/SEGEPRO_V2/faces/Mantenimiento/ingresarFiador.xhtml" class="menulink"> <i class="icon-accept4 Green"></i>
+<!--                        <span class="Fs10 DispBlock">Low Priority</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Ingreso de Fiadores</span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="/SEGEPRO_V2/faces/Mantenimiento/ingresoProfesiones.xhtml" class="menulink"> <i class="icon-accept4 Green"></i>
+<!--                        <span class="Fs10 DispBlock">Low Priority</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Ingreso Profesiones</span>
+                    </a></li>
+                <li><a href="/SEGEPRO_V2/faces/Mantenimiento/ingresarAvancesConstruccion.xhtml" class="menulink"> <i class="icon-accept4 Green"></i>
+<!--                        <span class="Fs10 DispBlock">Low Priority</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Ingreso Estados de Construccion</span>
+                    </a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <ul class="layout-tab-submenu" id="layout-events">
+        <li>
+            <a>REPORTERIA</a>
+            <ul>
+                <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink"> <i class="icon-pdf19 Fs26 Red"></i>
+<!--                        <span class="Fs10 DispBlock">18.08.2016</span>
+                        <span class="Fs10 DispBlock">At My Office</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Office Orientations</span>
+                        <!--<span class="DispBlock FontLatoLight">A vestibulum a posuere parturient luctus accumsan placerat leo mi a turpis a quisque praesent</span>-->
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink"> <i class="icon-pdf19 Fs26 Red"></i>
+<!--                        <span class="Fs10 DispBlock">18.08.2016</span>
+                        <span class="Fs10 DispBlock">At Meeting Room</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Meeting With Boss</span>
+                        <!--<span class="DispBlock FontLatoLight">A vestibulum a posuere parturient luctus accumsan placerat leo mi a turpis a quisque praesent</span>-->
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink"> <i class="icon-pdf19 Fs26 Red"></i>
+<!--                        <span class="Fs10 DispBlock">18.08.2016</span>
+                        <span class="Fs10 DispBlock">At Customer Office</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">New Products Setup</span>
+                        <!--<span class="DispBlock FontLatoLight">A vestibulum a posuere parturient luctus accumsan placerat leo mi a turpis a quisque praesent</span>-->
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink"> <i class="icon-pdf19 Fs26 Red"></i>
+<!--                        <span class="Fs10 DispBlock">18.08.2016</span>
+                        <span class="Fs10 DispBlock">At My Office</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Office Orientations</span>
+                        <!--<span class="DispBlock FontLatoLight">A vestibulum a posuere parturient luctus accumsan placerat leo mi a turpis a quisque praesent</span>-->
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink"> <i class="icon-pdf19 Fs26 Red"></i>
+<!--                        <span class="Fs10 DispBlock">18.08.2016</span>
+                        <span class="Fs10 DispBlock">At Meeting Room</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">Meeting With Boss</span>
+                        <!--<span class="DispBlock FontLatoLight">A vestibulum a posuere parturient luctus accumsan placerat leo mi a turpis a quisque praesent</span>-->
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink"> <i class="icon-pdf19 Fs26 Red"></i>
+<!--                        <span class="Fs10 DispBlock">18.08.2016</span>
+                        <span class="Fs10 DispBlock">At Customer Office</span>
+                        <div class="EmptyBox5"></div>-->
+                        <span class="DispBlock White Fs14 FontLatoRegular">New Products Setup</span>
+                        <!--<span class="DispBlock FontLatoLight">A vestibulum a posuere parturient luctus accumsan placerat leo mi a turpis a quisque praesent</span>-->
+                    </a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <!--<ul class="layout-tab-submenu" id="layout-addressbook">
+        <li>
+            <a>Usuarios</a>
+            <ul>
+                <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink OvHidden"> <i class="icon-office-worker1 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Poe Dameron</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs16 DispBlock FontLatoLight">+1 (234) 567 8 901</span>
+                            <span class="DispBlock FontLatoLight Fs12">poe@olympos.com</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink OvHidden"> <i class="icon-office-worker1 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Han Solo</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs16 DispBlock FontLatoLight">+1 (234) 567 8 901</span>
+                            <span class="DispBlock FontLatoLight Fs12">han@olympos.com</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink OvHidden"> <i class="icon-office-worker1 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Boba Fett</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs16 DispBlock FontLatoLight">+1 (234) 567 8 901</span>
+                            <span class="DispBlock FontLatoLight Fs12">boba@olympos.com</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink OvHidden"> <i class="icon-office-worker1 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Leia Solo</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs16 DispBlock FontLatoLight">+1 (234) 567 8 901</span>
+                            <span class="DispBlock FontLatoLight Fs12">leia@olympos.com</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink OvHidden"> <i class="icon-office-worker1 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Poe Dameron</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs16 DispBlock FontLatoLight">+1 (234) 567 8 901</span>
+                            <span class="DispBlock FontLatoLight Fs12">poe@olympos.com</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink OvHidden"> <i class="icon-office-worker1 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Han Solo</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs16 DispBlock FontLatoLight">+1 (234) 567 8 901</span>
+                            <span class="DispBlock FontLatoLight Fs12">han@olympos.com</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink OvHidden"> <i class="icon-office-worker1 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Boba Fett</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs16 DispBlock FontLatoLight">+1 (234) 567 8 901</span>
+                            <span class="DispBlock FontLatoLight Fs12">boba@olympos.com</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink OvHidden"> <i class="icon-office-worker1 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Leia Solo</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs16 DispBlock FontLatoLight">+1 (234) 567 8 901</span>
+                            <span class="DispBlock FontLatoLight Fs12">leia@olympos.com</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink OvHidden"> <i class="icon-office-worker1 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Poe Dameron</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs16 DispBlock FontLatoLight">+1 (234) 567 8 901</span>
+                            <span class="DispBlock FontLatoLight Fs12">poe@olympos.com</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink OvHidden"> <i class="icon-office-worker1 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Han Solo</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs16 DispBlock FontLatoLight">+1 (234) 567 8 901</span>
+                            <span class="DispBlock FontLatoLight Fs12">han@olympos.com</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink OvHidden"> <i class="icon-office-worker1 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Boba Fett</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs16 DispBlock FontLatoLight">+1 (234) 567 8 901</span>
+                            <span class="DispBlock FontLatoLight Fs12">boba@olympos.com</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink OvHidden"> <i class="icon-office-worker1 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Leia Solo</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs16 DispBlock FontLatoLight">+1 (234) 567 8 901</span>
+                            <span class="DispBlock FontLatoLight Fs12">leia@olympos.com</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink OvHidden"> <i class="icon-office-worker1 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Poe Dameron</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs16 DispBlock FontLatoLight">+1 (234) 567 8 901</span>
+                            <span class="DispBlock FontLatoLight Fs12">poe@olympos.com</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink OvHidden"> <i class="icon-office-worker1 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Han Solo</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs16 DispBlock FontLatoLight">+1 (234) 567 8 901</span>
+                            <span class="DispBlock FontLatoLight Fs12">han@olympos.com</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink OvHidden"> <i class="icon-office-worker1 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Boba Fett</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs16 DispBlock FontLatoLight">+1 (234) 567 8 901</span>
+                            <span class="DispBlock FontLatoLight Fs12">boba@olympos.com</span>
+                        </span>
+                    </a></li>
+                <div class="EmptyBox10"></div>
+                <li><a href="#" class="menulink OvHidden"> <i class="icon-office-worker1 Fs26 Blue"></i> 
+                        <span class="Fleft DispInlBlock">
+                            <span class="DispBlock White Fs14 FontLatoRegular">Leia Solo</span>
+                            <div class="EmptyBox5"></div>
+                            <span class="Fs16 DispBlock FontLatoLight">+1 (234) 567 8 901</span>
+                            <span class="DispBlock FontLatoLight Fs12">leia@olympos.com</span>
+                        </span>
+                    </a></li>
+            </ul>
+        </li>
+    </ul>-->
+
+</ui:composition>

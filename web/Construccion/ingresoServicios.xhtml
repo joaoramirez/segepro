@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui" template="../WEB-INF/template.xhtml">
+    <h:head>
+        <title>Construccion :: SEGEPRO</title>
+    </h:head>
+    <ui:define name="body" >
+        <div class="logo" style="margin-top:1%; margin-right:0%"><img src="../img/logo-hphes.png"  style=" width:10%;margin-left:85%;height:10%;margin-bottom: 0%"></img></div>
+        <div class="Continaer100 ui-fluid">
+            <div class="Card">
+                <div class="BigTopic">INGRESO DE SERVICIO DE ACCESO A LA VIVIENDA</div>
+                <div class="Separator"/>
+                <br />
+                <h:form id="PrincipalForm">
+                    <p:growl id="msg" showDetail="true" life="3000" />
+                    <p:growl id="message" showDetail="true" />
+                    <p:growl id="message1" showDetail="true" />
+
+                    <p:panel style="margin-bottom:10px;">
+                    <p:panelGrid id="panelIngreso1" columns="6" style="border: none" layout="grid">
+                            <p:outputLabel value="Agencia:" />
+                            <p:inputText id="agencia" value="" required="true" requiredMessage="Campo Codigo es Requerido." style="width: 80%" />
+                            <p:outputLabel value="Supervisor:" />
+                            <p:inputText id="supervisor" value="" required="true" requiredMessage="Campo Nombre Solicitante es Requerido." />
+                    </p:panelGrid>
+                    <div class="Container50 Responsive">
+                        <p:panelGrid id="panelIngreso2" columns="1" style="border: none" layout="grid">
+                        <p:outputLabel for="cod_sav" value="Código de SAV:" />
+                            <div class="EmptyBox5"/>
+                            <p:inputText id="cod_sav" value="" required="true" requiredMessage="El campo Codigo Supervision es requerido"/>
+                            <div class="EmptyBox5"/>
+                            <p:outputLabel for="tipo" value="Tipo de SAV:" />
+                            <div class="EmptyBox5"/>
+                            <p:selectOneMenu id="tipo" value="" required="true" requiredMessage="Campo Cliente es Requerido." >
+                                <p:ajax event="itemSelect" />
+                                <f:selectItem itemLabel="--Seleccione--" itemValue="" />
+                                <f:selectItems value=""
+                                               var="listadoItem"
+                                               itemLabel=""
+                                               itemValue="" />
+                            </p:selectOneMenu>
+                            <div class="EmptyBox5"/>
+                            <p:outputLabel for="nombresav" value="Nombre del SAV:" />
+                            <div class="EmptyBox5"/>
+                            <p:inputText id="nombresav" value="" required="true" requiredMessage="El campo Tipo Supervision es requerido"/>
+                            <div class="EmptyBox5"/>
+                            <p:outputLabel for="fechaIni" value="Fecha Inicio:" />
+                            <div class="EmptyBox5"/>
+                            <p:calendar id="fechaIni" pattern="dd/MM/yyyy" mask="99/99/9999" value="" title="Fecha" showOn="button" required="true" requiredMessage="El campo Fecha es requerido" />
+                            <div class="EmptyBox5"/>
+                            <p:outputLabel for="fechaFin" value="Fecha Fin:" />
+                            <div class="EmptyBox5"/>
+                            <p:calendar id="fechaFin" pattern="dd/MM/yyyy" mask="99/99/9999" value="" title="Fecha" showOn="button" required="true" requiredMessage="El campo Fecha es requerido" />
+                            <div class="EmptyBox5"/>
+                            <p:outputLabel for="monto" value="Monto Destinado:" />
+                            <div class="EmptyBox5"/>
+                            <p:inputText id="monto" value="" required="true" requiredMessage="El campo Medida Promedio es requerido"/>
+                             <div class="EmptyBox5"/>
+                             </p:panelGrid>
+                     </div>
+                             <div class="Container50 Responsive">
+                      <p:panelGrid id="panelIngreso3" columns="1" style="border: none" layout="grid">
+                            <p:outputLabel for="beneficiarios" value="Beneficiarios:" />
+                            <div class="EmptyBox5"/>
+                            <p:inputTextarea id="beneficiarios" value="" cols="40" rows="3" required="true" requiredMessage="El campo Observaciones es requerido"/>
+                            <div class="EmptyBox5"/>
+                            <p:outputLabel for="direc" value="Dirección:" />
+                            <div class="EmptyBox5"/>
+                            <p:inputTextarea id="direc" value="" required="true" requiredMessage="El campo Medida Promedio es requerido"/>
+                            <div class="EmptyBox5"/>
+                            <p:outputLabel for="longitud" value="Longitud" />
+                            <div class="EmptyBox5"/>
+                            <p:inputText id="longitud" value="" required="true" requiredMessage="El campo Longitud es requerido"/>
+                            <div class="EmptyBox5"/>
+                            <p:outputLabel for="latitud" value="Latitud" />
+                            <div class="EmptyBox5"/>
+                            <p:inputText id="latitud" value="" required="true" requiredMessage="El campo Latitud es requerido"/>
+                           <div class="EmptyBox5"/>
+                            <p:outputLabel for="observaciones" value="Observaciones:" />
+                            <div class="EmptyBox5"/>
+                            <p:inputTextarea id="observaciones" value="" cols="40" rows="3" required="true" requiredMessage="El campo Observaciones es requerido"/>
+                            <div class="EmptyBox5"/>
+                            </p:panelGrid>
+                    </div>
+                    <div class="EmptyBox40"/>
+                        <p:dataTable id="datalist" paginator="true" rows="10"
+                                     rowsPerPageTemplate="10,20,30,40,50,60,70,80,90,100" reflow="true">
+                            <p:column>
+                                <f:facet name="header">
+                                    Código SAV
+                                </f:facet>
+                                <h:outputText value="" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Tipo
+                                </f:facet>
+                                <h:outputText value="" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Nombre
+                                </f:facet>
+                                <h:outputText value="" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Fecha Inicio
+                                </f:facet>
+                                <h:outputText value="" >
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Fecha Fin
+                                </f:facet>
+                                <h:outputText value="" >
+                                </h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Monto
+                                </f:facet>
+                                <h:outputText value="" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Beneficiarios
+                                </f:facet>
+                                <h:outputText value="" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Dirección
+                                </f:facet>
+                                <h:outputText value="" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Observaciones
+                                </f:facet>
+                                <h:outputText value="" />
+                            </p:column>
+                            
+                        </p:dataTable>
+                    <br/>
+                    <p:panelGrid columns="5" style="border: none" layout="grid">
+                        <p:commandButton id="guardar" icon="fa fa-floppy-o" value="Guardar" title="Guardar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />
+                        <p:commandButton id="actualizar" icon="fa fa-refresh" value="Actualizar" title="Actualizar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton"  />
+                        <p:commandButton id="cancelar" icon="fa fa-times" value="Cancelar" title="Cancelar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />
+                    </p:panelGrid>
+                    </p:panel>
+                </h:form>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>

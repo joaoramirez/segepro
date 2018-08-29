@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/core-layout.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/olympos-layout.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/olympos-font.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/animate.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/nanoscroller.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/font-awsone.css"></link>
+        <title>SEGEPRO</title>
+    </h:head>
+    <h:body>
+        <div class="logo" style="margin-top:1%; margin-right:0%"><img src="../img/logo-hphes.png"  style=" width:10%;margin-left:85%;height:10%;margin-bottom: 0%"></img></div>
+        <div class="Continaer100 ui-fluid">
+            <div class="Card">
+                <div class="BigTopic">Menu Principal SEGEPRO</div>
+                <div class="Separator"/>
+                <br />
+                <h:form id="PrincipalForm">
+                    <p:dataGrid value="" columns="1" layout="grid"
+                                rows="1" paginator="true" id="images"
+                                paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                rowsPerPageTemplate="4,8,12,16,20">
+                        <f:facet name="header">
+                            Menu Principal
+                        </f:facet>
+                        <h:panelGrid columns="3" border="0" style="width:100%">
+                            <p:panel header="Créditos" style="text-align:center">
+                                <h:panelGrid columns="1" style="width:100%">
+                                    <p:graphicImage value="../img/creditos.png"/> 
+                                    <h:outputText value="Créditos" />
+                                    <p:commandLink title="View Detail">
+                                        <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                                    </p:commandLink>
+                                </h:panelGrid>
+                            </p:panel>
+                            <p:panel header="Construccion" style="text-align:center">
+                                <h:panelGrid columns="1" style="width:100%">
+                                    <p:graphicImage value="../img/construccion.png"/> 
+                                    <h:outputText value="Construccion" />
+                                    <p:commandLink title="View Detail">
+                                        <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                                    </p:commandLink>
+                                </h:panelGrid>
+                            </p:panel>
+                            <p:panel header="Gerencia de Agencia" style="text-align:center">
+                                <h:panelGrid columns="1" style="width:100%">
+                                    <p:graphicImage value="../img/gerencia_agencia.png"/> 
+                                    <h:outputText value="Gerencia de Agencia" />
+                                    <p:commandLink title="View Detail">
+                                        <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                                    </p:commandLink>
+                                </h:panelGrid>
+                            </p:panel>
+                            <p:panel header="Gerencia de Area" style="text-align:center">
+                                <h:panelGrid columns="1" style="width:100%">
+                                    <p:graphicImage value="../img/gerencia_area.png"/>
+                                    <h:outputText value="Gerencia de Area" />
+                                    <p:commandLink title="View Detail">
+                                        <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                                    </p:commandLink>
+                                </h:panelGrid>
+                            </p:panel>
+                            <p:panel header="Monitoreo de Proyectos" style="text-align:center">
+                                <h:panelGrid columns="1" style="width:100%">
+                                    <p:graphicImage value="../img/geopos.png"/> 
+                                    <h:outputText value="Monitoreo de Proyectos" />
+                                    <p:commandLink title="View Detail">
+                                        <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                                    </p:commandLink>
+                                </h:panelGrid>
+                            </p:panel>
+                            <p:panel header="Reportes" style="text-align:center">
+                                <h:panelGrid columns="1" style="width:100%">
+                                    <p:graphicImage value="../img/informe.png"/>
+                                    <h:outputText value="Reportes" />
+                                    <p:commandLink title="View Detail">
+                                        <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                                    </p:commandLink>
+                                </h:panelGrid>
+                            </p:panel>
+                        </h:panelGrid>
+                    </p:dataGrid>
+                </h:form>
+            </div>
+        </div>
+        <footer id="footer">
+            <div class="Container100" id="layout-footer">
+                <div class="Card">
+                    <!-- FOOTER  -->
+<!--                    <div class="Container100 NoIndent" style="border-bottom:dashed 1px #ccc;" id="footerlinks">
+                        <h:graphicImage name="images/logo.svg" id="logo" library="olympos-layout" style="height:20px;"/>
+                        <div class="DispInlBlock Fright">
+                            <a href="#layout-footer" class="Leaden Fs22"><i class="fa fa-facebook-square"></i></a>
+                            <a href="#layout-footer" class="Leaden Fs22"><i class="fa fa-twitter-square"></i></a>
+                            <a href="#layout-footer" class="Leaden Fs22"><i class="fa fa-linkedin-square"></i></a>
+                            <a href="#layout-footer" class="Leaden Fs22"><i class="fa fa-google-plus-square"></i></a>
+                        </div>
+                        <div class="EmptyBox10"></div>
+                    </div>-->
+                    <div class="EmptyBox10"></div>
+                    <div class="Container50 NoIndent Responsive100">
+                        <div class="Container100 NoIndent">
+                            <a href="#" class="DispInlBlock FontLatoRegular Blue Fs12 Fleft HoverEffect">Condiciones de Terminos</a>
+                            <span class="Fleft Black Fs12" style="padding:0px 5px;">|</span>
+                            <a href="#" class="DispInlBlock FontLatoRegular Blue Fs12 Fleft HoverEffect">Mapa del Sitio</a>
+                            <span class="Fleft Black Fs12" style="padding:0px 5px;">|</span>
+                            <a href="#" class="DispInlBlock FontLatoRegular Blue Fs12 Fleft HoverEffect">Politicas</a>
+                            <span class="Fleft Black Fs12" style="padding:0px 5px;">|</span>
+                            <a href="#" class="DispInlBlock FontLatoRegular Blue Fs12 Fleft HoverEffect">Acerca de</a>
+                        </div>
+                    </div>
+                    <div class="EmptyBox10 ShowOnMobile"></div>
+                    <div class="Container50 NoIndent Responsive100">
+                        <span class="DispBlock FontLatoRegular Black Fs12 HoverEffect TexAlRight FloatNoneOnMobile"><i class="fa fa-copyright" aria-hidden="true"></i> Todos los derechos reservados.</span>
+                        <div class="EmptyBox10"></div>
+                        <span class="DispBlock FontLatoRegular Black Fs12 HoverEffect TexAlRight"><i class="fa fa-mobile" aria-hidden="true"></i> 2016 UES FMP <br/> SEGEPRO</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </h:body>
+</html>
+

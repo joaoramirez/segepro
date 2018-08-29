@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 5.6.1.final using JasperReports Library version 5.6.1  -->
+<!-- 2018-02-11T21:07:21 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fiador_det_solicitud" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="76ab2497-79cd-43ba-a197-5499611ae1cf">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SEGEPRO"/>
+	<parameter name="id_cliente" class="java.lang.Integer"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\BorisECornejo\\Documents\\NetBeansProjects\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT direccion, punto_ref, telefono, reside_desde, condicion_vivienda, lugar_trabajo, jefe_inmediato,
+tiempo_empleo, salario, direccion_trabajo, telefono_trabajo, id_cliente FROM fiador WHERE id_cliente = $P{id_cliente}]]>
+	</queryString>
+	<field name="direccion" class="java.lang.String"/>
+	<field name="punto_ref" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String"/>
+	<field name="reside_desde" class="java.lang.String"/>
+	<field name="condicion_vivienda" class="java.lang.String"/>
+	<field name="lugar_trabajo" class="java.lang.String"/>
+	<field name="jefe_inmediato" class="java.lang.String"/>
+	<field name="tiempo_empleo" class="java.lang.String"/>
+	<field name="salario" class="java.math.BigDecimal"/>
+	<field name="direccion_trabajo" class="java.lang.String"/>
+	<field name="telefono_trabajo" class="java.lang.String"/>
+	<field name="id_cliente" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="223" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="1" width="230" height="20" uuid="b90d9494-5546-402f-8bf2-e9e56964c292"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+					<paragraph firstLineIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="21" width="230" height="20" uuid="d451708e-d7af-466a-acb9-8fbf79b5439f"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+					<paragraph firstLineIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{punto_ref}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="41" width="230" height="20" uuid="38ef64ce-c05f-42a1-b27b-6707358c3af2"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+					<paragraph firstLineIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="61" width="230" height="20" uuid="0e249b81-c1b7-40a9-840c-d98029e934fa"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+					<paragraph firstLineIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reside_desde}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="81" width="230" height="20" uuid="fad3af45-e3f3-497a-872d-c637b01bf9e5"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+					<paragraph firstLineIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{condicion_vivienda}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="101" width="230" height="20" uuid="5e20348d-c9b6-4c1f-aeb4-69770edd3e62"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+					<paragraph firstLineIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lugar_trabajo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="121" width="230" height="20" uuid="d1d737ec-6fa3-48d3-a25d-0f5020ed476e"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+					<paragraph firstLineIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jefe_inmediato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="141" width="230" height="20" uuid="41f95931-a286-4b1c-b268-477c63ce4adf"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+					<paragraph firstLineIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tiempo_empleo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ 0.00">
+				<reportElement x="0" y="161" width="230" height="20" uuid="59b943cd-ff0b-4707-9c73-bcb8acea3627"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+					<paragraph firstLineIndent="0" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="181" width="230" height="20" uuid="3e74c596-d73a-48b3-be18-645efae21105"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+					<paragraph firstLineIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{direccion_trabajo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="201" width="230" height="20" uuid="4df72bc9-d9b3-460a-b93e-da0e2169723a"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+					<paragraph firstLineIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telefono_trabajo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

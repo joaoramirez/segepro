@@ -1,0 +1,39 @@
+.ui-widget {
+    font-size: 13px !important;
+}
+.ui-layout-north {
+    z-index: 20 !important;
+    overflow: visible !important;;
+}
+.ui-layout-north .ui-layout-unit-content {
+    overflow: visible !important;
+}
+.ui-widget-header {
+    text-align: center;
+    font-size:  120%;
+   
+}
+.ui-button {
+    margin-top: 10px !important;
+}
+
+.ui-outputlabel{
+   margin: 10px 0px;
+font-family: inherit;
+font-weight: bold;
+line-height: 20px;
+color: inherit;
+text-rendering: optimizelegibility;
+    
+}
+
+ .highlight1{
+              
+        }
+        .highlight2{            
+              background: red  !important ;
+        }
+
+
+
+

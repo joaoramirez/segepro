@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 5.6.1.final using JasperReports Library version 5.6.1  -->
+<!-- 2018-02-19T22:29:15 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ingresos_familiares" pageWidth="612" pageHeight="792" columnWidth="608" leftMargin="2" rightMargin="2" topMargin="0" bottomMargin="0" uuid="5edddfe5-9f7f-4095-bf95-6a8a79095c52">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SEGEPRO"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="id_cliente" class="java.lang.Integer"/>
+	<parameter name="num_solicitud" class="java.lang.Integer"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\BorisECornejo\\Documents\\NetBeansProjects\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+				evaluacion_ingresos.alimentacion,
+				evaluacion_ingresos.educacion,
+				evaluacion_ingresos.transporte,
+				evaluacion_ingresos.salud,
+				evaluacion_ingresos.servicios,
+				evaluacion_ingresos.alquiler,
+				evaluacion_ingresos.recreacion,
+				evaluacion_ingresos.creditos,
+				evaluacion_ingresos.descuentos_ley,
+				evaluacion_ingresos.total1, familiar,
+				evaluacion_ingresos.otros_ingresos,
+				evaluacion_ingresos.total2,
+				evaluacion_ingresos.disponible,
+				evaluacion_ingresos.cuota_asignada,
+				evaluacion_ingresos.superavit,
+				evaluacion_ingresos.deficit,
+				 evaluacion_ingresos.num_solicitud 
+FROM
+				evaluacion_ingresos
+WHERE evaluacion_ingresos.cod_cliente = $P{id_cliente} 
+AND evaluacion_ingresos.num_solicitud   = $P{num_solicitud}
+]]>
+	</queryString>
+	<field name="alimentacion" class="java.math.BigDecimal"/>
+	<field name="educacion" class="java.math.BigDecimal"/>
+	<field name="transporte" class="java.math.BigDecimal"/>
+	<field name="salud" class="java.math.BigDecimal"/>
+	<field name="servicios" class="java.math.BigDecimal"/>
+	<field name="alquiler" class="java.math.BigDecimal"/>
+	<field name="recreacion" class="java.math.BigDecimal"/>
+	<field name="creditos" class="java.math.BigDecimal"/>
+	<field name="descuentos_ley" class="java.math.BigDecimal"/>
+	<field name="total1" class="java.math.BigDecimal"/>
+	<field name="familiar" class="java.math.BigDecimal"/>
+	<field name="otros_ingresos" class="java.math.BigDecimal"/>
+	<field name="total2" class="java.math.BigDecimal"/>
+	<field name="disponible" class="java.math.BigDecimal"/>
+	<field name="cuota_asignada" class="java.math.BigDecimal"/>
+	<field name="superavit" class="java.math.BigDecimal"/>
+	<field name="deficit" class="java.math.BigDecimal"/>
+	<field name="num_solicitud" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="3" width="559" height="20" forecolor="#FFFFFF" backcolor="#2FB134" uuid="230dfa3f-0726-45f4-831b-0db5cb179ac1"/>
+				<box>
+					<topPen lineWidth="1.0" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Evaluación de ingresos vs. Egresos familiares]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="370" splitType="Stretch">
+			<textField pattern="$ #0.00">
+				<reportElement x="175" y="0" width="105" height="20" uuid="d990c368-c28e-4db3-915e-8a3e9bf7813a"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="0" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{alimentacion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #0.00">
+				<reportElement x="175" y="20" width="105" height="20" uuid="1b8074de-d5da-4eac-9b69-2c2224195554"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="0" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{educacion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #0.00">
+				<reportElement x="175" y="40" width="105" height="20" uuid="7a3d6a5c-6d34-4895-b83c-8591b8cf4efa"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="0" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transporte}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #0.00">
+				<reportElement x="175" y="60" width="105" height="20" uuid="1ea85a1c-6120-4a32-9110-431d7291154c"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="0" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salud}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #0.00">
+				<reportElement x="175" y="80" width="105" height="20" uuid="4420b0f7-3de2-4855-89b9-0087853771ef"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="0" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{servicios}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #0.00">
+				<reportElement x="175" y="100" width="105" height="20" uuid="f7bf8db6-cdbd-4240-8276-ac463b0d25be"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="0" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{alquiler}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #0.00">
+				<reportElement x="175" y="120" width="105" height="20" uuid="438d7b96-4f5f-411e-8399-3e318415c282"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="0" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{recreacion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #0.00">
+				<reportElement x="175" y="140" width="105" height="20" uuid="1147860c-60ab-4e54-9df5-d1ce9b3fbd36"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="0" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{creditos}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #0.00">
+				<reportElement x="175" y="160" width="105" height="20" uuid="fe269f31-e086-4c2e-ae28-43056d64c4a9"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="0" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descuentos_ley}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #0.00">
+				<reportElement x="175" y="180" width="105" height="20" uuid="4a1ed923-e3ce-4dd9-8eb1-5f50da09503e"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="0" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #0.00">
+				<reportElement x="456" y="0" width="103" height="20" uuid="a09f56b3-1567-4d3c-9c3a-0dd02cbe2d27"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="0" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{familiar}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #0.00">
+				<reportElement x="456" y="20" width="103" height="20" uuid="6d530e45-a62b-4cbe-8016-fd8f0b035bdc"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="0" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{otros_ingresos}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #0.00">
+				<reportElement x="456" y="40" width="103" height="20" uuid="448ae441-f862-4e62-b5ab-808b03a53c3c"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="0" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #0.00">
+				<reportElement x="456" y="60" width="103" height="20" uuid="1917bb63-49cf-4a86-b840-32eee0e1ea45"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="0" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{disponible}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #0.00">
+				<reportElement x="456" y="100" width="103" height="20" uuid="93eb0fc0-9840-4117-9a48-1848370e5129"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="0" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cuota_asignada}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #0.00">
+				<reportElement x="456" y="120" width="103" height="20" uuid="1d05330b-ff77-4f68-8399-4d36ae041c35"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="0" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{superavit}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$ #0.00">
+				<reportElement x="456" y="140" width="103" height="20" uuid="835927aa-0620-4cea-9528-30aa99ff75cd"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="0" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{deficit}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="175" height="20" uuid="17d9ab78-26f1-40a0-ac12-9e46cb1175d4"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Alimentación grupo familiar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="175" height="20" uuid="d09ed4ae-5db9-4c94-acb4-5eb44d43e787"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Educación del grupo familiar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="175" height="20" uuid="a83e0f50-14be-4948-9c4b-b649f080ae91"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Transporte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="60" width="175" height="20" uuid="fef53567-cd63-4fa9-841c-0d43cee531f5"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Salud]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="80" width="175" height="20" uuid="3f4af6fd-353f-403a-8beb-41ec662c786e"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Servicios]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="100" width="175" height="20" uuid="adca468c-6f12-44b2-89a8-74cbce117c9b"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Alquiler]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="120" width="175" height="20" uuid="9dd16aa8-7942-432f-ac14-1fd3f3565117"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Recreación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="140" width="175" height="20" uuid="bcb8e3f1-cd82-4d22-86b3-9aa7e434d6fc"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Créditos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="160" width="175" height="20" uuid="6241addc-cb3e-4085-9138-8575ca7de6d5"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Descuentos de ley (ISSS, AFP, Renta)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="180" width="175" height="20" uuid="a000cac8-4335-4239-ab18-201b46cf9ae5"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Total (1) =]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="0" width="176" height="20" uuid="61dcf1b0-ef7e-4e81-92b9-3ab58c4ef45e"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Familiar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="20" width="176" height="20" uuid="9adc6ab7-85ce-48f9-8b35-2537a94d77d0"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Otros ingresos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="40" width="176" height="20" uuid="6c572f16-a838-417d-a264-60959e5b1fa4"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Total (2)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="60" width="176" height="20" uuid="9d443f25-162f-4192-bb09-3ee61fd13990"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Disponible (2-1) =]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="80" width="279" height="20" uuid="38958475-147a-4e0f-ba7d-292e528c0ecb"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="100" width="176" height="20" uuid="3a2d39ba-6ba1-4b1b-860f-4c4c77f22839"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Cuota]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="120" width="176" height="20" uuid="58658d73-4662-49b7-9ba3-76620cabad7d"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Superávit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="140" width="176" height="20" uuid="1c3b087c-b72f-4867-aaed-fc92b672eb32"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Déficit]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

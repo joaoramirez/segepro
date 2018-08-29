@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui" template="../WEB-INF/template.xhtml">
+    <h:head>
+<!--        <link rel="stylesheet" href="../Repositorio/font-awesome-4.7.0/css/font-awesome.min.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/core-layout.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/olympos-layout.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/olympos-font.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/animate.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/nanoscroller.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/font-awsone.css"></link>-->
+        <title>CRÉDITOS :: SEGEPRO</title>
+    </h:head>
+    <ui:define name="body" >
+        <div class="logo" style="margin-top:1%; margin-right:0%"><img src="../img/logo-hphes.png"  style=" width:10%;margin-left:85%;height:10%;margin-bottom: 0%"></img></div>
+        <div class="Continaer100 ui-fluid">
+            <div class="Card">
+                <div class="BigTopic">EVALUACIÓN PERSONAL - DESCRIPCIÓN DE BIENES ENCONTRADOS EN EL HOGAR</div>
+                <div class="Separator"/>
+                <h:form id="PrincipalForm">
+                    <p:growl id="msg" showDetail="true" life="3000" />
+                    <p:growl id="message" showDetail="true" />
+                    <p:growl id="message1" showDetail="true" />
+                    <p:panel header="Información de los Bienes" style="margin-bottom:10px;">
+                        <div class="Container50 Responsive">
+                            <p:panelGrid columns="1" style="border: none" layout="grid">
+                                <p:outputLabel value="Número Solicitud:" />
+                                <p:inputText id="numSolBienes" value="" required="true" requiredMessage="El campo Número de Solicitud es Requerido." />
+                                <p:outputLabel value="Código Solicitante:" />
+                                <p:inputText id="codSolBienes" value="" required="true" requiredMessage="El campo Código es Requerido." />
+                                <p:outputLabel value="Nombre Solicitante:" />
+                                <p:inputText id="nomSolBienes" value="" required="true" requiredMessage="El campo Nombre Solicitante es Requerido." />
+                                <p:outputLabel value="Artículo:" />
+                                <p:inputText id="artBienes" value="" required="true" requiredMessage="El campo Artículo es Requerido." />
+                                <p:outputLabel value="Marca/Modelo:" />
+                                <p:inputText id="marBienes" value="" required="true" requiredMessage="El campo Marca/Modelo es Requerido." />
+                                <p:outputLabel  value="Lugar de Compra:" />
+                                <p:inputText id="lugCompBienes" value="" required="true" requiredMessage="El campo Lugar de Compra es Requerido." />
+                            </p:panelGrid>
+                        </div>
+                        <div class="Container50 Responsive">
+                            <p:panelGrid columns="1" style="border: none" layout="grid">
+                                <p:outputLabel value="Estado:" />
+                                <p:selectOneMenu id="estadoBienes" value="" required="true" requiredMessage="El campo Estado es Requerido." >
+                                    <p:ajax event="itemSelect"/>
+                                    <f:selectItem itemLabel="--Seleccione--" itemValue="" />
+                                    <f:selectItem itemLabel="Activo" itemValue="Activo" />
+                                    <f:selectItem itemLabel="En Mora" itemValue="En Mora" />
+                                    <f:selectItem itemLabel="Cancelado" itemValue="Cancelado" />
+                                </p:selectOneMenu>
+                                <p:outputLabel value="Fecha:" />
+                                <p:calendar id="fechaBienes" pattern="dd/MM/yyyy" mask="99/99/9999" value="" title="Fecha" showOn="button" required="true" requiredMessage="El campo Fecha es requerido" tabindex="8" />
+                                <p:outputLabel value="Cuota que Pagaba:" />
+                                <p:inputNumber id="cuotaBienes" value="#{inputNumberView.input2}" symbol=" $" symbolPosition="p" decimalSeparator="." thousandSeparator="," required="true" requiredMessage="El campo Cuota de Pago es Requerido." >  </p:inputNumber> 
+                                <p:outputLabel value="Número de Cuotas:" />
+                                <p:inputText id="numeroBienes" value="" required="true" requiredMessage="El campo Número de Cuotas es Requerido." />
+                                <p:outputLabel value="Precio:" />
+                                <p:inputNumber id="precioBienes" value="#{inputNumberView.input2}" symbol=" $" symbolPosition="p" decimalSeparator="." thousandSeparator="," required="true" requiredMessage="El campo Precio es Requerido." >  </p:inputNumber> 
+                                
+                            </p:panelGrid>
+                        </div>
+                        <br/>
+                        <div class="EmptyBox40"/>
+                        <div class="Continaer100 ui-fluid">
+                        <p:dataTable id="datalist" var="item" paginator="true" rows="10"
+                                     rowSelectMode="single" selectionMode="single"
+                                     rowsPerPageTemplate="10,20,30,40,50,60,70,80,90,100" reflow="true">
+                            <p:ajax event="rowSelect" update=":PrincipalForm:actualizaEvalPersonalBienes :PrincipalForm:msg" />
+                            <p:column>
+                                <f:facet name="header">
+                                    Número Solicitud
+                                </f:facet>
+                                <h:outputText value="" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Código Solicitante
+                                </f:facet>
+                                <h:outputText value="" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Nombre Solicitante
+                                </f:facet>
+                                <h:outputText value="" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Artículo
+                                </f:facet>
+                                <h:outputText value="" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Marca/Modelo
+                                </f:facet>
+                                <h:outputText value="" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Lugar
+                                </f:facet>
+                                <h:outputText value="" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Estado
+                                </f:facet>
+                                <h:outputText value="" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Fecha
+                                </f:facet>
+                                <h:outputText value="" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Cuota de Pago
+                                </f:facet>
+                                <h:outputText value="" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Número de Cuotas
+                                </f:facet>
+                                <h:outputText value="" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Precio
+                                </f:facet>
+                                <h:outputText value="" />
+                            </p:column>
+                        </p:dataTable>
+                        <br />
+                        <p:panelGrid columns="6" style="border: none" layout="grid">
+                            <p:commandButton id="agregar" icon="fa fa-plus" value="Agregar" title="Agregar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />
+                            <p:commandButton id="guardar" icon="fa fa-floppy-o" value="Guardar" title="Guardar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" update=":PrincipalForm:msg"/>
+                            <p:commandButton id="actualizar" icon="fa fa-refresh" value="Actualizar" title="Actualizar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" process=":PrincipalForm:datalist" update=":PrincipalForm:actualizaEvalPersonalBienes :PrincipalForm:datalist" oncomplete="PF('actualizaEvalPersonalBienesDialog').show()" />
+                            <p:commandButton id="eliminar" icon="fa fa-minus" value="Eliminar" title="Eliminar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />
+                            <p:commandButton id="cancelar" icon="fa fa-times" value="Cancelar" title="Cancelar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />
+                        </p:panelGrid>
+
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                            <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </p:confirmDialog>
+
+                        <p:dialog id="actualizaEvalPersonalBienes" widgetVar="actualizaEvalPersonalBienesDialog" modal="true" resizable="false" showEffect="fade" hideEffect="fade" header="Actualizacion de Mejoras">
+                            <p:panelGrid id="mostrar" columns="2" >
+
+                                <p:outputLabel value="Número Solicitud:" />
+                                <p:inputText id="numSolBienes_modal" value="" required="true" requiredMessage="El campo Numero de Solicitud es Requerido." />
+                                <p:outputLabel value="Código Solicitante:" />
+                                <p:inputText id="codSolBienes_modal" value="" required="true" requiredMessage="Campo Código es Requerido." />
+                                <p:outputLabel value="Nombre Solicitante:" />
+                                <p:inputText id="nomSolBienes_modal" value="" required="true" requiredMessage="Campo Nombre Solicitante es Requerido." />
+                                <p:outputLabel value="Articulo:" />
+                                <p:inputText id="articuloBienes_modal" value="" required="true" requiredMessage="Campo Artículo Referencia es Requerido." />
+                                <p:outputLabel value="Marca/Modelo:" />
+                                <p:inputText id="marcaBienes_modal" value="" required="true" requiredMessage="El campo Marca/Modelo es Requerido." />
+                                <p:outputLabel  value="Lugar de Compra:" />
+                                <p:inputText id="lugarBienes_modal" value="" required="true" requiredMessage="El campo Lugar es Requerido." />
+                                <p:outputLabel value="Estado:" />
+                                <p:selectOneMenu id="estadoBienes_modal" value="" required="true" requiredMessage="El campo Estado es Requerido." >
+                                    <p:ajax event="itemSelect"/>
+                                    <f:selectItem itemLabel="--Seleccione--" itemValue="" />
+                                    <f:selectItem itemLabel="Activo" itemValue="Activo" />
+                                    <f:selectItem itemLabel="En Mora" itemValue="En Mora" />
+                                    <f:selectItem itemLabel="Cancelado" itemValue="Cancelado" />
+                                </p:selectOneMenu>
+                                <p:outputLabel value="Fecha:" />
+                                <p:calendar id="fechaBienes_modal" pattern="dd/MM/yyyy" mask="99/99/9999" value="" title="Fecha"  showOn="button" required="true" requiredMessage="El campo fecha es requerido" />
+                                <p:outputLabel value="Cuota de Pago:" />
+                                <p:inputNumber id="cuotaBienes_modal" value="#{inputNumberView.input2}" symbol=" $" symbolPosition="s" decimalSeparator="." thousandSeparator="," required="true" requiredMessage="El campo Cuota es Requerido." >  </p:inputNumber> 
+                                <p:outputLabel value="Número de Cuotas:" />
+                                <p:inputText id="numeroBienes_modal" value="" required="true" requiredMessage="El campo Número de Cuotas es Requerido." />
+                                <p:outputLabel value="Precio:" />
+                                <p:inputNumber id="precioBienes_modal" value="#{inputNumberView.input2}" symbol=" $" symbolPosition="s" decimalSeparator="." thousandSeparator="," required="true" requiredMessage="El campo Precio es Requerido." >  </p:inputNumber> 
+                                
+                            </p:panelGrid>
+                            <br />
+                            <p:panelGrid columns="5" style="border: none" layout="grid">
+                                <p:commandButton id="actualizar_modal" icon="fa fa-refresh" value="Actualizar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />
+                           <!--     <p:commandButton id="cancelar_modal" icon="fa fa-times" value="Cerrar" onclick="PF('actualizaEvalPersonalBienesDialog').hide()" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />-->
+                            </p:panelGrid>
+                        </p:dialog>
+                        </div>
+                        </p:panel>
+                </h:form>
+            </div>
+        </div>
+        
+    </ui:define>
+</ui:composition>

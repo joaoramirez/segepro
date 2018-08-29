@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui" template="../WEB-INF/template.xhtml">
+    <h:head>
+        <!--        <link rel="stylesheet" href="../Repositorio/font-awesome-4.7.0/css/font-awesome.min.css"></link>
+                <link rel="stylesheet" href="../resources/olympos-layout/css/core-layout.css"></link>
+                <link rel="stylesheet" href="../resources/olympos-layout/css/olympos-layout.css"></link>
+                <link rel="stylesheet" href="../resources/olympos-layout/css/olympos-font.css"></link>
+                <link rel="stylesheet" href="../resources/olympos-layout/css/animate.css"></link>
+                <link rel="stylesheet" href="../resources/olympos-layout/css/nanoscroller.css"></link>
+                <link rel="stylesheet" href="../resources/olympos-layout/css/font-awsone.css"></link>-->
+        <title>Gerencia de Area :: SEGEPRO</title>
+    </h:head>
+    <ui:define name="body" >
+        <div class="logo" style="margin-top:1%; margin-right:0%"><img src="../img/logo-hphes.png"  style=" width:10%;margin-left:85%;height:10%;margin-bottom: 0%"></img></div>
+        <div class="Continaer100 ui-fluid">
+            <div class="Card">
+                <div class="BigTopic">INGRESAR BRIGADAS</div>
+                <div class="Separator"/>
+                <br />
+                <h:form id="PrincipalForm">
+                    <p:growl id="msg" showDetail="true" life="3000" />
+                    <p:growl id="message" showDetail="true" />
+                    <p:growl id="message1" showDetail="true" />
+                    <p:panelGrid id="panelIngreso" columns="2" style="border: none" layout="grid">
+                        <p:outputLabel value="Código Brigada:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputText id="idbrigada" value="#{brigadasController.idbrigada}" required="true" requiredMessage="Campo Codigo es Requerido." />
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel value="Nombre Brigada:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputText id="nombre" value="#{brigadasController.nombre}" required="true" requiredMessage="Campo Nombres es Requerido." />
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel value="Agencia:" />
+                        <div class="EmptyBox5"/>
+                        <p:selectOneMenu id="agencia" value="#{brigadasController.idagencia}" required="true" requiredMessage="Campo Tipo Brgada es Requerido."  >
+                            <p:ajax event="itemSelect"/>
+                            <f:selectItem itemLabel="--Seleccione--" itemValue="#{null}" />
+                            <f:selectItems value="#{brigadasController.listadoAgencia}"
+                                           var="agenciaItem"
+                                           itemLabel="#{agenciaItem.nombre}" 
+                                           itemValue="#{agenciaItem.idAgencia}" />
+                        </p:selectOneMenu>
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel value="Cantidad Integrantes:" />
+                        <div class="EmptyBox5"/>
+                        <p:panelGrid id="slider" columns="1" style="margin-bottom: 10px">
+                            <p:inputText id="cantidad" value="#{brigadasController.cant_integrantes}" required="true" requiredMessage="Campo Cantidad es Requerido." />
+                            <p:slider for="cantidad" maxValue="25"/>
+                        </p:panelGrid>
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel value="Fecha Inicio:" />
+                        <div class="EmptyBox5"/>
+                        <p:calendar id="fechaini" pattern="dd/MM/yyyy" mask="99/99/9999" value="#{brigadasController.fecha_inicio}" title="Fecha inicio"  showOn="button" required="true" requiredMessage="El campo fecha inicio es requerido"/>
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel value="Fecha Fin:" />
+                        <div class="EmptyBox5"/>
+                        <p:calendar id="fechafin" pattern="dd/MM/yyyy" mask="99/99/9999" value="#{brigadasController.fecha_fin}" title="Fecha fin"  showOn="button" required="true" requiredMessage="El campo fecha fin es requerido"/>
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="Tipo Brigada:" />
+                        <div class="EmptyBox5"/>
+                        <p:selectOneMenu id="tbrigada" value="#{brigadasController.tipo_brigada}" required="true" requiredMessage="Campo Tipo Brgada es Requerido." >
+                            <p:ajax event="itemSelect"/>
+                            <f:selectItem itemLabel="--Seleccione--" itemValue="#{null}" />
+                            <f:selectItem itemLabel="Nacional" itemValue="Nacional" />
+                            <f:selectItem itemLabel="Internacional" itemValue="Internacional" />
+                        </p:selectOneMenu>
+                        <div class="EmptyBox40"/>
+                    </p:panelGrid>
+                    <br/>
+                    <p:dataTable id="datalist" var="item" paginator="true" rows="10" value="#{brigadasController.listadoBrigadas}"
+                                 rowKey="#{item.idBrigada}" rowSelectMode="single" selectionMode="single" selection="#{brigadasController.selectedBrigadas}"
+                                 rowsPerPageTemplate="10,20,30,40,50,60,70,80,90,100" reflow="true">
+                        <p:ajax event="rowSelect" listener="#{brigadasController.onRowSelectBrigada(event)}" update=":PrincipalForm:actualizaBrigadas" process="@this" />
+                        <p:column>
+                            <f:facet name="header">
+                                Código Brigada
+                            </f:facet>
+                            <h:outputText value="#{item.idBrigada}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Agencia
+                            </f:facet>
+                            <h:outputText value="#{item.idAgencia}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Nombre Brigada
+                            </f:facet>
+                            <h:outputText value="#{item.nomre}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Cantidad Integrantes
+                            </f:facet>
+                            <h:outputText value="#{item.cantIntegrantes}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Fecha Inicio
+                            </f:facet>
+                            <h:outputText value="#{item.fechaInic}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Fecha Fin
+                            </f:facet>
+                            <h:outputText value="#{item.fechaFin}" >
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Tipo Brigada
+                            </f:facet>
+                            <h:outputText value="#{item.tipoBrigada}" />
+                        </p:column>
+                    </p:dataTable>
+                    <br/>
+                    <p:panelGrid columns="6" style="border: none" layout="grid">
+                        <p:commandButton id="guardar" icon="fa fa-floppy-o" value="Guardar" title="Guardar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" actionListener="#{brigadasController.guardar()}" update="@form" process="@this,PrincipalForm:panelIngreso" />
+                        <p:commandButton id="actualizar" icon="fa fa-refresh" value="Actualizar" title="Actualizar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" process="PrincipalForm:datalist" update=":PrincipalForm:actualizaBrigadas :PrincipalForm:datalist" oncomplete="PF('actualizaBrigadasDialog').show()" />
+                        <p:commandButton id="eliminar" icon="fa fa-minus" value="Eliminar" title="Eliminar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />
+                        <p:commandButton id="cancelar" icon="fa fa-times" value="Cancelar" title="Cancelar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" actionListener="#{brigadasController.limpiarForm()}" update="@form" process="@this,PrincipalForm:panelIngreso" />
+                    </p:panelGrid>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>
+
+                    <p:dialog id="actualizaBrigadas" widgetVar="actualizaBrigadasDialog" modal="true" resizable="false" showEffect="fade" hideEffect="fade" header="Actualizacion de Brigadas">
+                        <p:panelGrid id="mostrar" columns="2" rendered="#{brigadasController.selectedBrigadas != null}" >
+
+                            <p:outputLabel value="Código Brigada"  />
+                            <p:outputLabel value="#{brigadasController.idbrigada_modal}" />
+
+                            <p:outputLabel value="Código Agencia"  />
+                            <p:selectOneMenu id="modal_agencia" value="#{brigadasController.idagencia_modal}">
+                                <p:ajax event="itemSelect"/>
+                                <f:selectItem itemLabel="--Seleccione--" itemValue="#{null}" />
+                                <f:selectItems value="#{brigadasController.listadoAgencia}"
+                                               var="agenciaMItem"
+                                               itemLabel="#{agenciaMItem.nombre}" 
+                                               itemValue="#{agenciaMItem.idAgencia}" />
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Nombre Brigada" />
+                            <p:inputText value="#{brigadasController.nombre_modal}" />
+
+                            <p:outputLabel value="Cantidad Integrantes"  />
+                            <p:inputText value="#{brigadasController.cant_integrantes_modal}" />
+
+                            <p:outputLabel  value="Fecha Inicio" />
+                            <p:calendar id="modal_fechaini" pattern="dd/MM/yyyy" mask="99/99/9999" value="#{brigadasController.fecha_inicio_modal}" />
+
+                            <p:outputLabel value="Fecha Fin" />
+                            <p:calendar id="modal_fechafin" pattern="dd/MM/yyyy" mask="99/99/9999" value="#{brigadasController.fecha_fin_modal}" />
+
+                            <p:outputLabel value="Tipo Brigada" />
+                            <p:selectOneMenu id="modal_tbrigada" value="#{brigadasController.tipo_brigada_modal}" >
+                                <p:ajax event="itemSelect"/>
+                                <f:selectItem itemLabel="--Seleccione--" itemValue="#{null}" />
+                                <f:selectItem itemLabel="Nacional" itemValue="Nacional" />
+                                <f:selectItem itemLabel="Internacional" itemValue="Internacional" />
+                            </p:selectOneMenu>
+
+                        </p:panelGrid>
+                        <br />
+                        <p:panelGrid columns="5" style="border: none" layout="grid">
+                            <p:commandButton id="actualizar_modal" icon="fa fa-refresh" value="Actualizar" action="#{brigadasController.actualizaBrigada()}"  update="@form" process="@this, PrincipalForm:mostrar :PrincipalForm:datalist :PrincipalForm:message1" oncomplete="handleSubmit(args,'actualizaBrigadasDialog');" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />
+                        </p:panelGrid>
+                    </p:dialog>
+                </h:form>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui" template="../WEB-INF/template.xhtml">
+    <h:head>
+<!--        <link rel="stylesheet" href="../Repositorio/font-awesome-4.7.0/css/font-awesome.min.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/core-layout.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/olympos-layout.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/olympos-font.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/animate.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/nanoscroller.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/font-awsone.css"></link>-->
+        <title>MANTENIMIENTO :: SEGEPRO</title>
+    </h:head>
+    <ui:define name="body" >
+        <div class="logo" style="margin-top:1%; margin-right:0%"><img src="../img/logo-hphes.png"  style=" width:10%;margin-left:85%;height:10%;margin-bottom: 0%"></img></div>
+        <div class="Continaer100 ui-fluid">
+            <div class="Card">
+                <div class="BigTopic">Ingresar Tipos de Mejoras</div>
+                <div class="Separator"/>
+                <br />
+                <h:form id="PrincipalForm">
+                    <div class="Continaer50">
+                    <p:growl id="msg" showDetail="true" life="3000" />
+                    <p:growl id="message" showDetail="true" />
+                    <p:growl id="message1" showDetail="true" />
+                    <p:panelGrid id="panelIngreso" columns="2" style="border: none" layout="grid">
+                        <p:outputLabel  value="Codigo Mejora:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputText id="idmejora" value="#{mejoraController.idMejora}" required="true" requiredMessage="El campo Codigo es requerido" />
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="Nombre Mejora:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputText id="nomMejora" value="#{mejoraController.nomMejora}" required="true" requiredMessage="El campo Nombre es requerido" />
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="Costo:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputText id="costo" value="#{mejoraController.costo}" required="true" requiredMessage="El campo Costo es requerido" />
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="Incluye:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputText id="incluye" value="#{mejoraController.incluye}" required="true" requiredMessage="El campo Incluye es requerido" />
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="Area Construida M2:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputText id="area" value="#{mejoraController.area}" required="true" requiredMessage="El campo Area es requerido" />
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="Descripcion:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputTextarea id="descripcion" value="#{mejoraController.descripcion}" cols="38" rows="3" required="true" requiredMessage="El campo Descripcion es requerido"/>
+                        <div class="EmptyBox40"/>
+                    </p:panelGrid>
+                    </div>
+                    <br/>
+                    <p:dataTable id="datalist" value="#{mejoraController.listadoMejoras}" var="item" rowKey="#{item.idMejora}" paginator="true" rows="5"
+                                 rowsPerPageTemplate="5,10,20,30,40,50,60,70,80,90,100" selectionMode="single" rowSelectMode="single"
+                                 selection="#{mejoraController.selectedMejora}" reflow="true">
+                        <p:ajax event="rowSelect" listener="#{mejoraController.onRowSelectMejora(event)}" update=":PrincipalForm:actualizaMejoras :PrincipalForm:msg" />
+                        <p:column width="6%">
+                            <f:facet name="header">
+                                Codigo Mejora
+                            </f:facet>
+                            <h:outputText id="codmejora" value="#{item.idMejora}"/>
+                        </p:column>
+                        <p:column width="10%">
+                            <f:facet name="header">
+                                Nombre Mejora
+                            </f:facet>
+                            <h:outputText id="nom_mejora" value="#{item.nombreMejora}"/>
+                        </p:column>
+                        <p:column width="6%">
+                            <f:facet name="header">
+                                Costo
+                            </f:facet>
+                            <h:outputText id="costo_mejora" value="#{item.costo}"/>
+                        </p:column>
+                        <p:column width="20%">
+                            <f:facet name="header">
+                                Incluye
+                            </f:facet>
+                            <h:outputText id="incluye_mejora" value="#{item.incluye}"/>
+                        </p:column>
+                        <p:column width="18%">
+                            <f:facet name="header">
+                                Area Construida M2
+                            </f:facet>
+                            <h:outputText id="area_mejora" value="#{item.areaConstruida}"/>
+                        </p:column>
+                        <p:column width="40%">
+                            <f:facet name="header">
+                                Descripcion
+                            </f:facet>
+                            <h:outputText id="des_mejora" value="#{item.descripcion}"/>
+                        </p:column>
+                    </p:dataTable>
+                    <br/>
+                    <p:panelGrid columns="5" style="border: none" layout="grid">
+                        <p:commandButton id="guardar" icon="fa fa-floppy-o" value="Guardar" title="Guardar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" actionListener="#{mejoraController.guardar()}" update="@form" process="@this,:PrincipalForm:panelIngreso" />
+                        <p:commandButton id="actualizar" icon="fa fa-refresh" value="Actualizar" title="Actualizar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" process=":PrincipalForm:datalist" update=":PrincipalForm:actualizaMejoras :PrincipalForm:datalist" oncomplete="PF('actualizaMejorasDialog').show()" />
+                        <p:commandButton id="eliminar" icon="fa fa-minus" value="Eliminar" title="Eliminar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" update="@form" process="@this,:PrincipalForm:datalist" >
+                            <p:confirm header="Advertencia" message="Esta seguro que desea Eliminar?" icon="ui-icon-alert" />
+                        </p:commandButton>
+                        <p:commandButton id="cancelar" icon="fa fa-times" value="Cancelar" title="Cancelar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" actionListener="#{mejoraController.limpiarForm()}" update="@form" process="@this,:PrincipalForm:panelIngreso" >
+                            <p:confirm header="Advertencia" message="Esta seguro que desea Cancelar?" icon="ui-icon-alert" />
+                        </p:commandButton>
+                    </p:panelGrid>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>
+                    
+                    <p:dialog id="actualizaMejoras" widgetVar="actualizaMejorasDialog" modal="true" resizable="false" showEffect="fade" hideEffect="fade" header="Actualizacion de Mejoras">
+                        <p:panelGrid id="mostrar" columns="2" >
+
+                            <p:outputLabel value="Codigo Mejora"  />
+                            <p:outputLabel value="#{mejoraController.idMejora_modal}" />
+                            
+                            <p:outputLabel value="Nombre Mejora" />
+                            <p:inputText value="#{mejoraController.nomMejora_modal}" />
+                            
+                            <p:outputLabel value="Costo" />
+                            <p:inputText value="#{mejoraController.costo_modal}" />
+                            
+                            <p:outputLabel value="Incluye" />
+                            <p:inputTextarea cols="30" rows="3" value="#{mejoraController.incluye_modal}" />
+                            
+                            <p:outputLabel value="Area Construida M2" />
+                            <p:inputText value="#{mejoraController.area_modal}" />
+                            
+                            <p:outputLabel value="Descripcion" />
+                            <p:inputTextarea cols="38" rows="3" value="#{mejoraController.descripcion_modal}" />
+                            
+                        </p:panelGrid>
+                        <br />
+                        <p:panelGrid columns="5" style="border: none" layout="grid">
+                            <p:commandButton id="actualizar_modal" action="#{mejoraController.actualizaMejora()}"  update="@form" process="@this, PrincipalForm:mostrar :PrincipalForm:datalist :PrincipalForm:message1" oncomplete="handleSubmit(args,'actualizaMejorasDialog');" icon="fa fa-refresh" value="Actualizar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" /> 
+                        </p:panelGrid>
+                    </p:dialog>
+                    
+                </h:form>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>

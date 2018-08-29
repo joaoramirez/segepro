@@ -1,0 +1,6 @@
+.outerpanelgrid>tbody>tr{
+    border: none !important;
+}
+.outerpanelgrid>tbody>tr>td{
+    border: none !important;
+}

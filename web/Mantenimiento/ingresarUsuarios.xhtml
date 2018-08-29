@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui" template="../WEB-INF/template.xhtml">
+    <h:head>
+  <!--      <link rel="stylesheet" href="../Repositorio/font-awesome-4.7.0/css/font-awesome.min.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/core-layout.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/olympos-layout.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/olympos-font.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/animate.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/nanoscroller.css"></link>
+        <link rel="stylesheet" href="../resources/olympos-layout/css/font-awsone.css"></link>-->
+        <title>USUARIOS :: SEGEPRO</title>
+    </h:head>
+    <ui:define name="body" >
+        <div class="logo" style="margin-top:1%; margin-right:0%"><img src="../img/logo-hphes.png"  style=" width:10%;margin-left:85%;height:10%;margin-bottom: 0%"></img></div>
+        <div class="Continaer100 ui-fluid">
+            <div class="Card">
+                <div class="BigTopic">Ingresar Usuarios</div>
+                <div class="Separator"/>
+                <br />
+                <h:form id="PrincipalForm">
+                    <p:growl id="msg" showDetail="true" life="3000" />
+                    <p:panelGrid id="panelIngreso" columns="2" style="border: none" layout="grid">
+                        <p:outputLabel  value="Agencia" />
+                        <div class="EmptyBox5"/>
+                        <p:selectOneMenu id="mod" value="#{usuarioController.idAgencia}" required="true" requiredMessage="Campo Agencia es Requerido." >
+                                    <p:ajax event="itemSelect" />
+                                    <f:selectItem itemLabel="--Seleccione--" itemValue="" />
+                                    <f:selectItems value="#{usuarioController.listadoAgencia}"
+                                                   var="listadoItem"
+                                                   itemLabel="#{listadoItem[1]}"
+                                                   itemValue="#{listadoItem[0]}" />
+                                </p:selectOneMenu>
+                        <div class="EmptyBox40"/>
+                        <!--<p:commandButton id="buscar" icon="fa fa-floppy-o" value="Buscar" title="Buscar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" update=":PrincipalForm:msg"/>-->
+                        <p:outputLabel  value="Código Usuario:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputText id="idUsuario" value="#{usuarioController.idUsuario}" required="true" requiredMessage="Debe de generarse el codigo del Usuario" />
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="Nombre:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputText id="nombre" value="#{usuarioController.nombre}" required="true" requiredMessage="Debe de ingresar el nombre del Usuario" />
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="Apellido:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputText id="apellido" value="#{usuarioController.apellido}" required="true" requiredMessage="Debe de ingresar el nombre del Usuario" />
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="DUI:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputMask id="dui" value="#{usuarioController.dui}" mask="99999999-9"/>
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="NIT:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputMask id="nit" value="#{usuarioController.nit}" mask="9999-999999-999-9"/>
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="Fecha de nacimiento:" />
+                        <div class="EmptyBox5"/>
+                        <p:calendar id="fechaNac" value="#{usuarioController.fecha_nacimiento}" pattern="dd/MM/yyyy" mask="99/99/9999" showOn="button" />
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="Teléfono:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputMask id="tel" value="#{usuarioController.telefono}" mask="9999-9999"/>
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="Dirección:" />
+                        <div class="EmptyBox5"/>
+                        <p:inputTextarea id="dir" value="#{usuarioController.direccion}" cols="38" rows="3" required="true" requiredMessage="El campo de Dirección es requerido"/>
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="Genero:" />
+                        <div class="EmptyBox5"/>
+                        <p:selectOneMenu id="genero" value="#{usuarioController.sexo}">
+                            <f:selectItem itemLabel="-Seleccione-" itemValue="" />
+                            <f:selectItem itemLabel="Femenino" itemValue="F" />
+                            <f:selectItem itemLabel="Masculino" itemValue="M" />
+                        </p:selectOneMenu>
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="Estado Civil:" />
+                        <div class="EmptyBox5"/>
+                        <p:selectOneMenu id="console" value="#{usuarioController.estado_civil}" >
+                            <f:selectItem itemLabel="-Seleccione-" itemValue="" />
+                            <f:selectItem itemLabel="Soltero/a" itemValue="Soltero/a" />
+                            <f:selectItem itemLabel="Casado/a" itemValue="Casado/a" />
+                            <f:selectItem itemLabel="Acompañado/a" itemValue="Acompañado/a" />
+                            <f:selectItem itemLabel="Viudo/a" itemValue="Viudo/a" />
+                            <f:selectItem itemLabel="Separado/a" itemValue="Separado/a" />
+                            <f:selectItem itemLabel="Divorsiado/a" itemValue="Divorsiado/a" />
+                        </p:selectOneMenu>
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="Profesion:" />
+                        <div class="EmptyBox5"/>
+                        <p:selectOneMenu id="profesion" value="#{usuarioController.profesion}" >
+                            <f:selectItem itemLabel="--Seleccione--" itemValue="" />
+                            <f:selectItems value="#{usuarioController.listadoProfesion}"
+                                                   var="listadoItem"
+                                                   itemLabel="#{listadoItem.nombreProfesion}"
+                                                   itemValue="#{listadoItem.nombreProfesion}" />
+                        </p:selectOneMenu>
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="Usuario:" />
+                       <div class="EmptyBox5"/>
+                       <p:inputText id="puntoRef" value="#{usuarioController.usuario}" required="true" requiredMessage="Debe de ingresar el nombre del proveedor" />
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="Password:" />
+                        <div class="EmptyBox5"/>
+                        <p:password id="pass" value="#{usuarioController.clave}" feedback="true" required="true" requiredMessage="Debe de ingresar el nombre del proveedor" />
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="Estado:" />
+                        <div class="EmptyBox5"/>
+                        <p:selectOneMenu id="estado" value="#{usuarioController.estado}">
+                            <f:selectItem itemLabel="-Seleccione-" itemValue="" />
+                            <f:selectItem itemLabel="Activo" itemValue="Activo" />
+                            <f:selectItem itemLabel="Inactivo" itemValue="Inactivo" />
+                        </p:selectOneMenu>
+                        <div class="EmptyBox40"/>
+                        <p:outputLabel  value="Cargo:" />
+                        <div class="EmptyBox5"/>
+                        <p:selectOneMenu id="cargo" value="#{usuarioController.cargo}" >
+                            <f:selectItem itemLabel="-Seleccione-" itemValue="" />
+                            <f:selectItem itemLabel="Oficial de Crédito" itemValue="Oficial de Crédito" />
+                            <f:selectItem itemLabel="Supervisor de Construcción" itemValue="Supervisor de Construcción" />
+                            <f:selectItem itemLabel="Administrador de Agencia" itemValue="Administrador de Agencia" />
+                            <f:selectItem itemLabel="Gerente de Agencia" itemValue="Gerente de Agencia" />
+                            <f:selectItem itemLabel="Gerente de Área" itemValue="Gerente de Área" />
+                        </p:selectOneMenu>
+                        <div class="EmptyBox40"/>
+                    </p:panelGrid>
+                    <div class="EmptyBox40"/>
+                    <p:dataTable id="datalist" var="item" paginator="true" rows="10" value="#{usuarioController.listadoUsuario}" rowKey="#{item.idUsuario}"
+                                 selection="#{usuarioController.selectedUsuario}" selectionMode="single" rowSelectMode="single" rowsPerPageTemplate="10,20,30,40,50,60,70,80,90,100" reflow="true">
+                        <p:column>
+                            <f:facet name="header">
+                                Código
+                            </f:facet>
+                            <h:outputText value="#{item.idUsuario}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Nombre
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Apellido
+                            </f:facet>
+                            <h:outputText value="#{item.apellido}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                DUI
+                            </f:facet>
+                            <h:outputText value="#{item.dui}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Teléfono
+                            </f:facet>
+                            <h:outputText value="#{item.telefono}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Agencia
+                            </f:facet>
+                            <h:outputText value="#{item.idAgencia.nombre}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Cargo
+                            </f:facet>
+                            <h:outputText value="#{item.cargo}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Usuario
+                            </f:facet>
+                            <h:outputText value="#{item.usuario}" />
+                        </p:column>
+                    </p:dataTable>
+                    <br/>
+                    <p:panelGrid columns="6" style="border: none" layout="grid">
+                        <p:commandButton id="guardar" icon="fa fa-floppy-o" value="Guardar" title="Guardar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" actionListener="#{usuarioController.guardar()}" update="@form" process="@this,:PrincipalForm:panelIngreso" />
+                        <p:commandButton id="actualizar" icon="fa fa-refresh" value="Actualizar" title="Actualizar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" process=":PrincipalForm:datalist" update=":PrincipalForm:actualizaUsuarios :PrincipalForm:datalist" oncomplete="PF('actualizaUsuariosDialog').show()" />
+                        <p:commandButton id="DarBaja" icon="fa fa-minus" value="Dar Baja" title="Dar Baja" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />
+                        <p:commandButton id="cancelar" icon="fa fa-times" value="Cancelar" title="Cancelar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" actionListener="#{usuarioController.limpiarForm()}" update="@form" process="@this,:PrincipalForm:panelIngreso" />
+                    </p:panelGrid>
+                    
+                    <p:dialog id="actualizaUsuarios" widgetVar="actualizaUsuariosDialog" modal="true" resizable="false" showEffect="fade" hideEffect="fade" header="Actualizacion de Usuarios">
+                            <p:panelGrid id="mostrar" columns="2" >
+
+                                <p:outputLabel value="Número de Solucitud"  />
+                                <p:outputLabel value="" />
+
+                                <p:outputLabel value="Codigo Solicitante"  />
+                                <p:inputText value="" />
+
+                            </p:panelGrid>
+                            <br />
+                            <p:panelGrid columns="5" style="border: none" layout="grid">
+                                <p:commandButton id="actualizar_modal" icon="fa fa-refresh" value="Actualizar" styleClass="ui-button ui-widget ui-state-default ui-corner-left ui-button-text-icon-left White Fs14 GreenButton" />
+                            </p:panelGrid>
+                    </p:dialog>
+                    
+                </h:form>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
